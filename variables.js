@@ -1,7 +1,9 @@
 module.exports = function (self) {
 	self.setVariableDefinitions([
-		{ variableId: 'variable1', name: 'My first variable' },
-		{ variableId: 'variable2', name: 'My second variable' },
-		{ variableId: 'variable3', name: 'Another variable' },
+		{ variableId: 'active_source_index', name: 'Aktive Quelle Index' },
+		{ variableId: 'active_source_label', name: 'Aktive Quelle Label' },
+		{ variableId: 'last_routed_racks', name: 'Zuletzt geroutete Racks (IDs)' },
+		{ variableId: 'last_action_timestamp', name: 'Letzter Action Zeitstempel (ms)' },
+		{ variableId: 'failed_steps_total', name: 'Fehlgeschlagene MIDI Steps Gesamt' },
 	])
 }
