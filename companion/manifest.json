@@ -1,0 +1,26 @@
+{
+	"id": "waves-superrack-router",
+	"name": "waves-superrack-router",
+	"shortname": "module-shortname",
+	"description": "A short one line description of your module",
+	"version": "0.0.0",
+	"license": "MIT",
+	"repository": "git+https://github.com/bitfocus/companion-module-waves-superrack-router.git",
+	"bugs": "https://github.com/bitfocus/companion-module-waves-superrack-router/issues",
+	"maintainers": [
+		{
+			"name": "Your name",
+			"email": "Your email"
+		}
+	],
+	"runtime": {
+		"type": "node22",
+		"api": "nodejs-ipc",
+		"apiVersion": "0.0.0",
+		"entrypoint": "../main.js"
+	},
+	"legacyIds": [],
+	"manufacturer": "Waves",
+	"products": ["Superrack Performer", "Superrack SoundGrid"],
+	"keywords": []
+}

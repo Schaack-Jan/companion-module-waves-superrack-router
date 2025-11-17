@@ -1,0 +1,14 @@
+{
+  "racks": {
+    "1": {
+      "name": "Rack 1",
+      "enabled": true,
+      "midiSteps": [
+        { "type": "cc", "channel": 1, "controller": 0, "value": 127, "delay": 50 },
+        { "type": "noteon", "channel": 1, "note": 60, "value": 100, "delay": 100 },
+        { "type": "program", "channel": 1, "program": 5, "value": 0, "delay": 0 }
+      ]
+    }
+  }
+}
+

@@ -1,0 +1,9 @@
+{
+  "name": "Waves SuperRack Router",
+  "id": "waves-superrack-router",
+  "version": "0.1.0",
+  "manufacturer": "Generic",
+  "description": "Routing von WING Quellen zu Waves SuperRack Racks mit MIDI Sequenzen",
+  "license": "MIT"
+}
+
