@@ -1,7 +1,7 @@
 // Kopf von main.js (ersetzen / vor bestehendem Code einfügen)
 console.info('[BOOT] Datei wird geladen')
 
-const { InstanceBase, runEntrypoint, InstanceStatus } = require('@companion-module/base')
+const {InstanceBase, runEntrypoint, InstanceStatus} = require('@companion-module/base')
 const UpgradeScripts = require('./upgrades')
 const UpdateActions = require('./actions')
 const UpdateFeedbacks = require('./feedbacks')
@@ -30,8 +30,8 @@ class ModuleInstance extends InstanceBase {
         super(internal)
         this.state = {
             wingIndexMap: null,
-            routingMatrix: { matrix: {} },
-            rackMidiMap: { racks: {} },
+            routingMatrix: {matrix: {}},
+            rackMidiMap: {racks: {}},
             activeSourceIndex: null,
             activeSourceLabel: '',
             lastRoutedRacks: [],
@@ -43,7 +43,7 @@ class ModuleInstance extends InstanceBase {
             sequenceTimeoutMs: 1000,
         }
         this.logLevel = 'info'
-        this._jsonCacheText = { wing: '', routing: '', midi: '' }
+        this._jsonCacheText = {wing: '', routing: '', midi: ''}
     }
 
     async init(config) {
@@ -69,10 +69,22 @@ class ModuleInstance extends InstanceBase {
         if (old !== this.midiPortName) this._reopenMidiPort()
         this._applyConfig()
         await this._loadAllJsonFromConfig()
-        try { this.updateActions() } catch {}
-        try { this.updateFeedbacks() } catch {}
-        try { this.updateVariableDefinitions() } catch {}
-        try { this._buildPresets() } catch {}
+        try {
+            this.updateActions()
+        } catch {
+        }
+        try {
+            this.updateFeedbacks()
+        } catch {
+        }
+        try {
+            this.updateVariableDefinitions()
+        } catch {
+        }
+        try {
+            this._buildPresets()
+        } catch {
+        }
     }
 
     getConfigFields() {
@@ -96,10 +108,10 @@ class ModuleInstance extends InstanceBase {
                 id: 'logLevel',
                 label: 'Log Level',
                 choices: [
-                    { id: 'error', label: 'error' },
-                    { id: 'warn', label: 'warn' },
-                    { id: 'info', label: 'info' },
-                    { id: 'debug', label: 'debug' },
+                    {id: 'error', label: 'error'},
+                    {id: 'warn', label: 'warn'},
+                    {id: 'info', label: 'info'},
+                    {id: 'debug', label: 'debug'},
                 ],
                 default: this.logLevel || 'info',
             },
@@ -108,11 +120,11 @@ class ModuleInstance extends InstanceBase {
                 id: 'maxRacks',
                 label: 'Rack Configuration',
                 choices: [
-                    { id: 64, label: '64' },
-                    { id: 32, label: '32' },
-                    { id: 16, label: '16' },
-                    { id: 8, label: '8' },
-                    { id: 4, label: '4' },
+                    {id: 64, label: '64'},
+                    {id: 32, label: '32'},
+                    {id: 16, label: '16'},
+                    {id: 8, label: '8'},
+                    {id: 4, label: '4'},
                 ],
                 default: this.state.maxRacks || 64,
             },
@@ -178,7 +190,7 @@ class ModuleInstance extends InstanceBase {
             data1 = String(step.program)
             data2 = ''
         } else {
-            this._log('warn','Unbekannter MIDI Typ',{ type: step.type })
+            this._log('warn', 'Unbekannter MIDI Typ', {type: step.type})
             return
         }
         this.setVariableValues({
@@ -187,7 +199,7 @@ class ModuleInstance extends InstanceBase {
             midi_last_data1: data1,
             midi_last_data2: data2,
         })
-        this._log('debug','MIDI Step vorbereitet',{ status, ch, data1, data2 })
+        this._log('debug', 'MIDI Step vorbereitet', {status, ch, data1, data2})
         // Generic-MIDI Aktionen können jetzt die Variablen auslesen
     }
 
@@ -195,6 +207,7 @@ class ModuleInstance extends InstanceBase {
         const order = ['error', 'warn', 'info', 'debug']
         return order.indexOf(level) <= order.indexOf(this.logLevel)
     }
+
     _log(level, msg, data) {
         if (!this._shouldLog(level)) return
         const line = `[${level.toUpperCase()}] ${msg}` + (data ? ` ${JSON.stringify(data)}` : '')
@@ -202,9 +215,9 @@ class ModuleInstance extends InstanceBase {
     }
 
     async _loadAllJsonFromConfig() {
-        this._parseJsonField('wing', this._validateWingIndexMap, { channels: [], buses: [], mains: [], matrices: [] })
-        this._parseJsonField('routing', this._validateRoutingMatrix, { matrix: {} })
-        this._parseJsonField('midi', this._validateRackMidiMap, { racks: {} })
+        this._parseJsonField('wing', this._validateWingIndexMap, {channels: [], buses: [], mains: [], matrices: []})
+        this._parseJsonField('routing', this._validateRoutingMatrix, {matrix: {}})
+        this._parseJsonField('midi', this._validateRackMidiMap, {racks: {}})
     }
 
     _parseJsonField(kind, validateFn, defaults) {
@@ -214,7 +227,8 @@ class ModuleInstance extends InstanceBase {
             try {
                 const j = JSON.parse(raw)
                 if (validateFn(j)) parsed = j
-            } catch {}
+            } catch {
+            }
         }
         if (kind === 'wing') this.state.wingIndexMap = parsed
         else if (kind === 'routing') this.state.routingMatrix = parsed
@@ -228,7 +242,10 @@ class ModuleInstance extends InstanceBase {
             if (kind === 'wing') valid = this._validateWingIndexMap(obj)
             else if (kind === 'routing') valid = this._validateRoutingMatrix(obj)
             else if (kind === 'midi') valid = this._validateRackMidiMap(obj)
-            if (!valid) { this._log('warn', 'Apply JSON ungültig', { kind }); return false }
+            if (!valid) {
+                this._log('warn', 'Apply JSON ungültig', {kind});
+                return false
+            }
 
             if (kind === 'wing') this.state.wingIndexMap = obj
             else if (kind === 'routing') this.state.routingMatrix = obj
@@ -239,160 +256,272 @@ class ModuleInstance extends InstanceBase {
                 if (kind === 'wing') this.config.wingJsonText = text
                 else if (kind === 'routing') this.config.routingJsonText = text
                 else if (kind === 'midi') this.config.midiJsonText = text
-                if (typeof this.saveConfig === 'function') { try { this.saveConfig() } catch {} }
+                if (typeof this.saveConfig === 'function') {
+                    try {
+                        this.saveConfig()
+                    } catch {
+                    }
+                }
             }
-            this._log('info', 'JSON angewendet', { kind })
-            if (kind === 'wing') { this.updateActions(); this._buildPresets() }
+            this._log('info', 'JSON angewendet', {kind})
+            if (kind === 'wing') {
+                this.updateActions();
+                this._buildPresets()
+            }
             return true
         } catch (e) {
-            this._log('error', 'Apply JSON Fehler', { kind, error: e.message })
+            this._log('error', 'Apply JSON Fehler', {kind, error: e.message})
             return false
         }
     }
 
     resetRackSteps(rackId) {
         const rack = this.state.rackMidiMap?.racks?.[rackId]
-        if (!rack) { this._log('warn', 'resetRackSteps Rack nicht gefunden', { rackId }); return }
+        if (!rack) {
+            this._log('warn', 'resetRackSteps Rack nicht gefunden', {rackId});
+            return
+        }
         rack.midiSteps = []
         this._jsonCacheText.midi = JSON.stringify(this.state.rackMidiMap, null, 2)
         if (this.config) {
             this.config.midiJsonText = this._jsonCacheText.midi
-            if (typeof this.saveConfig === 'function') { try { this.saveConfig() } catch {} }
+            if (typeof this.saveConfig === 'function') {
+                try {
+                    this.saveConfig()
+                } catch {
+                }
+            }
         }
-        this._log('info', 'Rack Steps geleert', { rackId })
+        this._log('info', 'Rack Steps geleert', {rackId})
     }
 
-	_validateWingIndexMap(obj) {
-		if (!obj) return false
-		if (!Array.isArray(obj.channels)||!Array.isArray(obj.buses)||!Array.isArray(obj.mains)||!Array.isArray(obj.matrices)) return false
-		const used = new Set()
-		const checkArr = (arr)=> arr.every(e=> e && typeof e.index==='number' && typeof e.label==='string' && !used.has(e.index) && used.add(e.index))
-		return checkArr(obj.channels)&&checkArr(obj.buses)&&checkArr(obj.mains)&&checkArr(obj.matrices)
-	}
-	_validateRoutingMatrix(obj) {
-		if (!obj||typeof obj!=='object'||!obj.matrix||typeof obj.matrix!=='object') return false
-		for (const [k,v] of Object.entries(obj.matrix)) {
-			if (!/^\d+$/.test(k)) return false
-			if (!Array.isArray(v)) return false
-			const seen = new Set()
-			for (const r of v) { if (typeof r!=='number'||r<1||r>this.state.maxRacks||seen.has(r)) return false; seen.add(r) }
-		}
-		return true
-	}
-	_validateRackMidiMap(obj) {
-		if (!obj||typeof obj!=='object'||!obj.racks) return false
-		for (const [rackId,rack] of Object.entries(obj.racks)) {
-			if (!/^\d+$/.test(rackId)) return false
-			if (!rack||typeof rack!=='object'||typeof rack.name!=='string'||typeof rack.enabled!=='boolean'||!Array.isArray(rack.midiSteps)) return false
-			if (rack.midiSteps.length>1000) return false
-			for (const step of rack.midiSteps) {
-				if (!['cc','noteon','program'].includes(step.type)) return false
-				if (typeof step.channel!=='number'||step.channel<1||step.channel>16) return false
-				if (typeof step.delay!=='number'||step.delay<0) return false
-				if (step.type==='cc') { if (typeof step.controller!=='number'||step.controller<0||step.controller>127) return false; if (typeof step.value!=='number'||step.value<0||step.value>127) return false }
-				if (step.type==='noteon') { if (typeof step.note!=='number'||step.note<0||step.note>127) return false; if (typeof step.value!=='number'||step.value<0||step.value>127) return false }
-				if (step.type==='program') { if (typeof step.program!=='number'||step.program<0||step.program>127) return false }
-			}
-		}
-		return true
-	}
+    _validateWingIndexMap(obj) {
+        if (!obj) return false
+        if (!Array.isArray(obj.channels) || !Array.isArray(obj.buses) || !Array.isArray(obj.mains) || !Array.isArray(obj.matrices)) return false
+        const used = new Set()
+        const checkArr = (arr) => arr.every(e => e && typeof e.index === 'number' && typeof e.label === 'string' && !used.has(e.index) && used.add(e.index))
+        return checkArr(obj.channels) && checkArr(obj.buses) && checkArr(obj.mains) && checkArr(obj.matrices)
+    }
 
-	updateActions() { UpdateActions(this) }
-	updateFeedbacks() { UpdateFeedbacks(this) }
-	updateVariableDefinitions() { UpdateVariableDefinitions(this) }
+    _validateRoutingMatrix(obj) {
+        if (!obj || typeof obj !== 'object' || !obj.matrix || typeof obj.matrix !== 'object') return false
+        for (const [k, v] of Object.entries(obj.matrix)) {
+            if (!/^\d+$/.test(k)) return false
+            if (!Array.isArray(v)) return false
+            const seen = new Set()
+            for (const r of v) {
+                if (typeof r !== 'number' || r < 1 || r > this.state.maxRacks || seen.has(r)) return false;
+                seen.add(r)
+            }
+        }
+        return true
+    }
 
-	_updateVariables() {
-		this.setVariableValues({
-			active_source_index: this.state.activeSourceIndex ?? '',
-			active_source_label: this.state.activeSourceLabel ?? '',
-			last_routed_racks: this.state.lastRoutedRacks.join(','),
-			last_action_timestamp: this.state.lastActionTimestamp,
-			failed_steps_total: this.state.failedStepsTotal,
-		})
-	}
-	_buildSourceChoices() {
-		const res = []
-		const m = this.state.wingIndexMap
-		if (!m) return res
-		const pushArr = (arr)=> { for (const e of arr) res.push({ id: e.index, label: e.label }) }
-		pushArr(m.channels); pushArr(m.buses); pushArr(m.mains); pushArr(m.matrices)
-		return res
-	}
-	_buildRackChoices() {
-		const racks = this.state.rackMidiMap?.racks || {}
-		return Object.keys(racks).map(r=> ({ id: parseInt(r,10), label: `Rack ${r}` }))
-	}
-	_lookupSourceLabel(index) {
-		const m = this.state.wingIndexMap; if (!m) return ''
-		const find = (arr)=> arr.find(e=> e.index===index)
-		return find(m.channels)?.label || find(m.buses)?.label || find(m.mains)?.label || find(m.matrices)?.label || ''
-	}
-	async routeSource(sourceIndex) {
-		if (sourceIndex == null) { this._log('warn','routeSource ohne Index'); return }
-		if (this.state.sequenceRunning) { this._log('warn','Sequenz läuft – neue Source verworfen',{sourceIndex}); return }
-		const matrix = this.state.routingMatrix?.matrix || {}
-		const rackIds = matrix[String(sourceIndex)] || []
-		this.state.sequenceRunning = true
-		this.state.sequenceStartTs = Date.now()
-		this.state.activeSourceIndex = sourceIndex
-		this.state.activeSourceLabel = this._lookupSourceLabel(sourceIndex)
-		this.state.lastRoutedRacks = rackIds.slice()
-		this.state.lastActionTimestamp = Date.now()
-		this._updateVariables()
-		this._log('info','Route Source gestartet',{sourceIndex,rackIds})
-		let aborted = false
-		for (const rackId of rackIds) {
-			if (Date.now() - this.state.sequenceStartTs > this.state.sequenceTimeoutMs) { aborted = true; break }
-			await this._executeRackSequence(rackId)
-		}
-		if (aborted) { this._log('error','Sequenz Timeout – abgebrochen'); this.state.failedStepsTotal++; this._updateVariables() }
-		this.state.sequenceRunning = false
-		if (!aborted) this._log('info','Route Source abgeschlossen',{sourceIndex})
-	}
-	async routeRack(rackId) {
-		if (rackId == null) { this._log('warn','routeRack ohne RackId'); return }
-		if (this.state.sequenceRunning) { this._log('warn','Sequenz läuft – Rack verworfen',{rackId}); return }
-		this.state.sequenceRunning = true
-		this.state.sequenceStartTs = Date.now()
-		this.state.lastRoutedRacks = [rackId]
-		this.state.lastActionTimestamp = Date.now()
-		this._updateVariables()
-		await this._executeRackSequence(rackId)
-		this.state.sequenceRunning = false
-		this._log('info','routeRack fertig',{rackId})
-	}
-	async _executeRackSequence(rackId) {
-		const rack = this.state.rackMidiMap?.racks?.[rackId]
-		if (!rack) { this._log('warn','Rack nicht gefunden',{rackId}); return }
-		if (!rack.enabled) { this._log('debug','Rack disabled',{rackId}); return }
-		this._log('info','Rack Sequenz start',{rackId, steps: rack.midiSteps.length})
-		for (const step of rack.midiSteps) {
-			if (Date.now() - this.state.sequenceStartTs > this.state.sequenceTimeoutMs) { this._log('error','Timeout während Rack Sequenz',{rackId}); this.state.failedStepsTotal++; this._updateVariables(); return }
-			try { this._sendMidiStep(step) } catch(e) { this._log('error','MIDI Step Fehler',{rackId,error:e.message}); this.state.failedStepsTotal++; this._updateVariables() }
-			if (step.delay>0) await new Promise(res=> setTimeout(res, step.delay))
-		}
-		this._log('info','Rack Sequenz Ende',{rackId})
-	}
+    _validateRackMidiMap(obj) {
+        if (!obj || typeof obj !== 'object' || !obj.racks) return false
+        for (const [rackId, rack] of Object.entries(obj.racks)) {
+            if (!/^\d+$/.test(rackId)) return false
+            if (!rack || typeof rack !== 'object' || typeof rack.name !== 'string' || typeof rack.enabled !== 'boolean' || !Array.isArray(rack.midiSteps)) return false
+            if (rack.midiSteps.length > 1000) return false
+            for (const step of rack.midiSteps) {
+                if (!['cc', 'noteon', 'program'].includes(step.type)) return false
+                if (typeof step.channel !== 'number' || step.channel < 1 || step.channel > 16) return false
+                if (typeof step.delay !== 'number' || step.delay < 0) return false
+                if (step.type === 'cc') {
+                    if (typeof step.controller !== 'number' || step.controller < 0 || step.controller > 127) return false;
+                    if (typeof step.value !== 'number' || step.value < 0 || step.value > 127) return false
+                }
+                if (step.type === 'noteon') {
+                    if (typeof step.note !== 'number' || step.note < 0 || step.note > 127) return false;
+                    if (typeof step.value !== 'number' || step.value < 0 || step.value > 127) return false
+                }
+                if (step.type === 'program') {
+                    if (typeof step.program !== 'number' || step.program < 0 || step.program > 127) return false
+                }
+            }
+        }
+        return true
+    }
 
-	_buildPresets() {
-		const presets = []
-		const srcChoices = this._buildSourceChoices()
-		for (const c of srcChoices) {
-			presets.push({
-				type: 'button', category: 'Quellen', name: `Route ${c.label}`,
-				style: { text: c.label, size: 'auto', color: 'white', bgcolor: 'darkgrey' },
-				actions: [{ actionId: 'route_source', options: { sourceIndex: c.id } }],
-				feedbacks: [{ feedbackId: 'active_source', options: { sourceIndex: c.id }, style: { bgcolor: 'green', color: 'white' } }],
-			})
-		}
-		presets.push({ type: 'button', category: 'System', name: 'Reload JSON', style: { text: 'Reload JSON', size: 'auto', color: 'white', bgcolor: 'blue' }, actions: [{ actionId: 'reload_json' }] })
-		presets.push({ type: 'button', category: 'System', name: 'Empty Routing', style: { text: 'Empty Routing', size: 'auto', color: 'white', bgcolor: 'orange' }, actions: [{ actionId: 'empty_routing' }] })
-		const rackChoices = this._buildRackChoices()
-		for (const r of rackChoices) {
-			presets.push({ type: 'button', category: 'Racks', name: `Rack ${r.id}`, style: { text: `Rack ${r.id}`, size: 'auto', color: 'white', bgcolor: 'darkgrey' }, actions: [{ actionId: 'route_rack', options: { rackId: r.id } }], feedbacks: [{ feedbackId: 'rack_last_used', options: { rackId: r.id }, style: { bgcolor: 'purple', color: 'white' } }] })
-		}
-		this.setPresetDefinitions(presets)
-	}
+    updateActions() {
+        UpdateActions(this)
+    }
+
+    updateFeedbacks() {
+        UpdateFeedbacks(this)
+    }
+
+    updateVariableDefinitions() {
+        UpdateVariableDefinitions(this)
+    }
+
+    _updateVariables() {
+        this.setVariableValues({
+            active_source_index: this.state.activeSourceIndex ?? '',
+            active_source_label: this.state.activeSourceLabel ?? '',
+            last_routed_racks: this.state.lastRoutedRacks.join(','),
+            last_action_timestamp: this.state.lastActionTimestamp,
+            failed_steps_total: this.state.failedStepsTotal,
+        })
+    }
+
+    _buildSourceChoices() {
+        const res = []
+        const m = this.state.wingIndexMap
+        if (!m) return res
+        const pushArr = (arr) => {
+            for (const e of arr) res.push({id: e.index, label: e.label})
+        }
+        pushArr(m.channels);
+        pushArr(m.buses);
+        pushArr(m.mains);
+        pushArr(m.matrices)
+        return res
+    }
+
+    _buildRackChoices() {
+        const racks = this.state.rackMidiMap?.racks || {}
+        return Object.keys(racks).map(r => ({id: parseInt(r, 10), label: `Rack ${r}`}))
+    }
+
+    _lookupSourceLabel(index) {
+        const m = this.state.wingIndexMap;
+        if (!m) return ''
+        const find = (arr) => arr.find(e => e.index === index)
+        return find(m.channels)?.label || find(m.buses)?.label || find(m.mains)?.label || find(m.matrices)?.label || ''
+    }
+
+    async routeSource(sourceIndex) {
+        if (sourceIndex == null) {
+            this._log('warn', 'routeSource ohne Index');
+            return
+        }
+        if (this.state.sequenceRunning) {
+            this._log('warn', 'Sequenz läuft – neue Source verworfen', {sourceIndex});
+            return
+        }
+        const matrix = this.state.routingMatrix?.matrix || {}
+        const rackIds = matrix[String(sourceIndex)] || []
+        this.state.sequenceRunning = true
+        this.state.sequenceStartTs = Date.now()
+        this.state.activeSourceIndex = sourceIndex
+        this.state.activeSourceLabel = this._lookupSourceLabel(sourceIndex)
+        this.state.lastRoutedRacks = rackIds.slice()
+        this.state.lastActionTimestamp = Date.now()
+        this._updateVariables()
+        this._log('info', 'Route Source gestartet', {sourceIndex, rackIds})
+        let aborted = false
+        for (const rackId of rackIds) {
+            if (Date.now() - this.state.sequenceStartTs > this.state.sequenceTimeoutMs) {
+                aborted = true;
+                break
+            }
+            await this._executeRackSequence(rackId)
+        }
+        if (aborted) {
+            this._log('error', 'Sequenz Timeout – abgebrochen');
+            this.state.failedStepsTotal++;
+            this._updateVariables()
+        }
+        this.state.sequenceRunning = false
+        if (!aborted) this._log('info', 'Route Source abgeschlossen', {sourceIndex})
+    }
+
+    async routeRack(rackId) {
+        if (rackId == null) {
+            this._log('warn', 'routeRack ohne RackId');
+            return
+        }
+        if (this.state.sequenceRunning) {
+            this._log('warn', 'Sequenz läuft – Rack verworfen', {rackId});
+            return
+        }
+        this.state.sequenceRunning = true
+        this.state.sequenceStartTs = Date.now()
+        this.state.lastRoutedRacks = [rackId]
+        this.state.lastActionTimestamp = Date.now()
+        this._updateVariables()
+        await this._executeRackSequence(rackId)
+        this.state.sequenceRunning = false
+        this._log('info', 'routeRack fertig', {rackId})
+    }
+
+    async _executeRackSequence(rackId) {
+        const rack = this.state.rackMidiMap?.racks?.[rackId]
+        if (!rack) {
+            this._log('warn', 'Rack nicht gefunden', {rackId});
+            return
+        }
+        if (!rack.enabled) {
+            this._log('debug', 'Rack disabled', {rackId});
+            return
+        }
+        this._log('info', 'Rack Sequenz start', {rackId, steps: rack.midiSteps.length})
+        for (const step of rack.midiSteps) {
+            if (Date.now() - this.state.sequenceStartTs > this.state.sequenceTimeoutMs) {
+                this._log('error', 'Timeout während Rack Sequenz', {rackId});
+                this.state.failedStepsTotal++;
+                this._updateVariables();
+                return
+            }
+            try {
+                this._sendMidiStep(step)
+            } catch (e) {
+                this._log('error', 'MIDI Step Fehler', {rackId, error: e.message});
+                this.state.failedStepsTotal++;
+                this._updateVariables()
+            }
+            if (step.delay > 0) await new Promise(res => setTimeout(res, step.delay))
+        }
+        this._log('info', 'Rack Sequenz Ende', {rackId})
+    }
+
+    _buildPresets() {
+        const presets = []
+        const srcChoices = this._buildSourceChoices()
+        for (const c of srcChoices) {
+            presets.push({
+                type: 'button', category: 'Quellen', name: `Route ${c.label}`,
+                style: {text: c.label, size: 'auto', color: 'white', bgcolor: 'darkgrey'},
+                actions: [{actionId: 'route_source', options: {sourceIndex: c.id}}],
+                feedbacks: [{
+                    feedbackId: 'active_source',
+                    options: {sourceIndex: c.id},
+                    style: {bgcolor: 'green', color: 'white'}
+                }],
+            })
+        }
+        presets.push({
+            type: 'button',
+            category: 'System',
+            name: 'Reload JSON',
+            style: {text: 'Reload JSON', size: 'auto', color: 'white', bgcolor: 'blue'},
+            actions: [{actionId: 'reload_json'}]
+        })
+        presets.push({
+            type: 'button',
+            category: 'System',
+            name: 'Empty Routing',
+            style: {text: 'Empty Routing', size: 'auto', color: 'white', bgcolor: 'orange'},
+            actions: [{actionId: 'empty_routing'}]
+        })
+        const rackChoices = this._buildRackChoices()
+        for (const r of rackChoices) {
+            presets.push({
+                type: 'button',
+                category: 'Racks',
+                name: `Rack ${r.id}`,
+                style: {text: `Rack ${r.id}`, size: 'auto', color: 'white', bgcolor: 'darkgrey'},
+                actions: [{actionId: 'route_rack', options: {rackId: r.id}}],
+                feedbacks: [{
+                    feedbackId: 'rack_last_used',
+                    options: {rackId: r.id},
+                    style: {bgcolor: 'purple', color: 'white'}
+                }]
+            })
+        }
+        this.setPresetDefinitions(presets)
+    }
 }
 
 console.info('[BOOT] runEntrypoint vor Aufruf')

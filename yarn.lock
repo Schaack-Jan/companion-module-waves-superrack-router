@@ -172,6 +172,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@julusian/midi@npm:^3.6.1":
+  version: 3.6.1
+  resolution: "@julusian/midi@npm:3.6.1"
+  dependencies:
+    node-addon-api: "npm:^6.1.0"
+    node-gyp: "npm:latest"
+    pkg-prebuilds: "npm:^1.0.0"
+  checksum: 10c0/de7d5b215cfb89a261909aafe99adb586ba444ca9ba484905eb11ccce5660ea41b58bd890517af6f1faebac5da4cf80544df57e8ef7044108711be446f6d7f81
+  languageName: node
+  linkType: hard
+
 "@npmcli/agent@npm:^4.0.0":
   version: 4.0.0
   resolution: "@npmcli/agent@npm:4.0.0"
@@ -557,15 +568,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bindings@npm:~1.5.0":
-  version: 1.5.0
-  resolution: "bindings@npm:1.5.0"
-  dependencies:
-    file-uri-to-path: "npm:1.0.0"
-  checksum: 10c0/3dab2491b4bb24124252a91e656803eac24292473e56554e35bbfe3cc1875332cfa77600c3bac7564049dc95075bf6fcc63a4609920ff2d64d0fe405fcf0d4ba
-  languageName: node
-  linkType: hard
-
 "browserslist@npm:^4.26.3":
   version: 4.28.0
   resolution: "browserslist@npm:4.28.0"
@@ -625,6 +627,17 @@ __metadata:
   version: 1.0.4
   resolution: "chrome-trace-event@npm:1.0.4"
   checksum: 10c0/3058da7a5f4934b87cf6a90ef5fb68ebc5f7d06f143ed5a4650208e5d7acae47bc03ec844b29fbf5ba7e46e8daa6acecc878f7983a4f4bb7271593da91e61ff5
+  languageName: node
+  linkType: hard
+
+"cliui@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "cliui@npm:8.0.1"
+  dependencies:
+    string-width: "npm:^4.2.0"
+    strip-ansi: "npm:^6.0.1"
+    wrap-ansi: "npm:^7.0.0"
+  checksum: 10c0/4bda0f09c340cbb6dfdc1ed508b3ca080f12992c18d68c6be4d9cf51756033d5266e61ec57529e610dacbf4da1c634423b0c1b11037709cc6b09045cbd815df5
   languageName: node
   linkType: hard
 
@@ -713,15 +726,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"easymidi@npm:^2.0.0":
-  version: 2.1.1
-  resolution: "easymidi@npm:2.1.1"
-  dependencies:
-    midi: "npm:^2.0.0"
-  checksum: 10c0/f9da6e4a0d2e4348effee931ecd2c2959dae3f992ca4e2bf4c52f371ba2568ba7961c76f9e370a20d3cd4507d4e51c96315c31044d2515a3c9ecca3eb489ec5c
-  languageName: node
-  linkType: hard
-
 "ejson@npm:^2.2.3":
   version: 2.2.3
   resolution: "ejson@npm:2.2.3"
@@ -799,7 +803,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"escalade@npm:^3.2.0":
+"escalade@npm:^3.1.1, escalade@npm:^3.2.0":
   version: 3.2.0
   resolution: "escalade@npm:3.2.0"
   checksum: 10c0/ced4dd3a78e15897ed3be74e635110bbf3b08877b0a41be50dcb325ee0e0b5f65fc2d50e9845194d7c4633f327e2e1c6cce00a71b617c5673df0374201d67f65
@@ -988,13 +992,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"file-uri-to-path@npm:1.0.0":
-  version: 1.0.0
-  resolution: "file-uri-to-path@npm:1.0.0"
-  checksum: 10c0/3b545e3a341d322d368e880e1c204ef55f1d45cdea65f7efc6c6ce9e0c4d22d802d5629320eb779d006fe59624ac17b0e848d83cc5af7cd101f206cb704f5519
-  languageName: node
-  linkType: hard
-
 "find-up@npm:^4.0.0":
   version: 4.1.0
   resolution: "find-up@npm:4.1.0"
@@ -1048,6 +1045,13 @@ __metadata:
   version: 1.1.2
   resolution: "function-bind@npm:1.1.2"
   checksum: 10c0/d8680ee1e5fcd4c197e4ac33b2b4dce03c71f4d91717292785703db200f5c21f977c568d28061226f9b5900cbcd2c84463646134fd5337e7925e0942bc3f46d5
+  languageName: node
+  linkType: hard
+
+"get-caller-file@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "get-caller-file@npm:2.0.5"
+  checksum: 10c0/c6c7b60271931fa752aeb92f2b47e355eac1af3a2673f47c9589e8f8a41adc74d45551c1bc57b5e66a80609f10ffb72b6f575e4370d61cc3f7f3aaff01757cde
   languageName: node
   linkType: hard
 
@@ -1341,17 +1345,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"midi@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "midi@npm:2.0.0"
-  dependencies:
-    bindings: "npm:~1.5.0"
-    nan: "npm:^2.14.2"
-    node-gyp: "npm:latest"
-  checksum: 10c0/7232f4f216998f2bd1c1382f1b6c33e0876def64580c98684d9092c49efccef7409e3b3a3c329d32067c21ea36ddf34041c36fe0eaa6c47de35ef1b5436d2217
-  languageName: node
-  linkType: hard
-
 "mime-db@npm:1.52.0":
   version: 1.52.0
   resolution: "mime-db@npm:1.52.0"
@@ -1467,15 +1460,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nan@npm:^2.14.2":
-  version: 2.23.1
-  resolution: "nan@npm:2.23.1"
-  dependencies:
-    node-gyp: "npm:latest"
-  checksum: 10c0/bda21d2eeea65d49d673d0ec63030212264a55b4a7e6546a73b5a1540dcfa3c3f3cc0e7f23940d2e8edd4dc58525e97941d533d3be55a2da2158489150de32b9
-  languageName: node
-  linkType: hard
-
 "nanoid@npm:^3.3.11":
   version: 3.3.11
   resolution: "nanoid@npm:3.3.11"
@@ -1496,6 +1480,15 @@ __metadata:
   version: 2.6.2
   resolution: "neo-async@npm:2.6.2"
   checksum: 10c0/c2f5a604a54a8ec5438a342e1f356dff4bc33ccccdb6dc668d94fe8e5eccfc9d2c2eea6064b0967a767ba63b33763f51ccf2cd2441b461a7322656c1f06b3f5d
+  languageName: node
+  linkType: hard
+
+"node-addon-api@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "node-addon-api@npm:6.1.0"
+  dependencies:
+    node-gyp: "npm:latest"
+  checksum: 10c0/d2699c4ad15740fd31482a3b6fca789af7723ab9d393adc6ac45250faaee72edad8f0b10b2b9d087df0de93f1bdc16d97afdd179b26b9ebc9ed68b569faa4bac
   languageName: node
   linkType: hard
 
@@ -1697,6 +1690,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pkg-prebuilds@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "pkg-prebuilds@npm:1.0.0"
+  dependencies:
+    yargs: "npm:^17.7.2"
+  bin:
+    pkg-prebuilds-copy: bin/copy.mjs
+    pkg-prebuilds-verify: bin/verify.mjs
+  checksum: 10c0/a955b097d3693216c06015fe03ae5866da5f1d2ec6a75971194e3cf5c342e1fdde27786bf0cce85814183cd98aecaf732ae1373fc2389a576daca2f3375661ae
+  languageName: node
+  linkType: hard
+
 "prettier-linter-helpers@npm:^1.0.0":
   version: 1.0.0
   resolution: "prettier-linter-helpers@npm:1.0.0"
@@ -1747,6 +1752,13 @@ __metadata:
   dependencies:
     resolve: "npm:^1.20.0"
   checksum: 10c0/1a30074124a22abbd5d44d802dac26407fa72a0a95f162aa5504ba8246bc5452f8b1a027b154d9bdbabcd8764920ff9333d934c46a8f17479c8912e92332f3ff
+  languageName: node
+  linkType: hard
+
+"require-directory@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "require-directory@npm:2.1.1"
+  checksum: 10c0/83aa76a7bc1531f68d92c75a2ca2f54f1b01463cb566cf3fbc787d0de8be30c9dbc211d1d46be3497dac5785fe296f2dd11d531945ac29730643357978966e99
   languageName: node
   linkType: hard
 
@@ -1943,7 +1955,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"string-width-cjs@npm:string-width@^4.2.0, string-width@npm:^4.1.0":
+"string-width-cjs@npm:string-width@^4.2.0, string-width@npm:^4.1.0, string-width@npm:^4.2.0, string-width@npm:^4.2.3":
   version: 4.2.3
   resolution: "string-width@npm:4.2.3"
   dependencies:
@@ -2154,8 +2166,7 @@ __metadata:
   dependencies:
     "@companion-module/base": "npm:~1.12.1"
     "@companion-module/tools": "npm:^2.4.2"
-    easymidi: "npm:^2.0.0"
-    midi: "npm:^2.0.0"
+    "@julusian/midi": "npm:^3.6.1"
     prettier: "npm:^3.6.2"
   languageName: unknown
   linkType: soft
@@ -2275,7 +2286,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0":
+"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0, wrap-ansi@npm:^7.0.0":
   version: 7.0.0
   resolution: "wrap-ansi@npm:7.0.0"
   dependencies:
@@ -2297,6 +2308,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"y18n@npm:^5.0.5":
+  version: 5.0.8
+  resolution: "y18n@npm:5.0.8"
+  checksum: 10c0/4df2842c36e468590c3691c894bc9cdbac41f520566e76e24f59401ba7d8b4811eb1e34524d57e54bc6d864bcb66baab7ffd9ca42bf1eda596618f9162b91249
+  languageName: node
+  linkType: hard
+
 "yallist@npm:^4.0.0":
   version: 4.0.0
   resolution: "yallist@npm:4.0.0"
@@ -2308,6 +2326,28 @@ __metadata:
   version: 5.0.0
   resolution: "yallist@npm:5.0.0"
   checksum: 10c0/a499c81ce6d4a1d260d4ea0f6d49ab4da09681e32c3f0472dee16667ed69d01dae63a3b81745a24bd78476ec4fcf856114cb4896ace738e01da34b2c42235416
+  languageName: node
+  linkType: hard
+
+"yargs-parser@npm:^21.1.1":
+  version: 21.1.1
+  resolution: "yargs-parser@npm:21.1.1"
+  checksum: 10c0/f84b5e48169479d2f402239c59f084cfd1c3acc197a05c59b98bab067452e6b3ea46d4dd8ba2985ba7b3d32a343d77df0debd6b343e5dae3da2aab2cdf5886b2
+  languageName: node
+  linkType: hard
+
+"yargs@npm:^17.7.2":
+  version: 17.7.2
+  resolution: "yargs@npm:17.7.2"
+  dependencies:
+    cliui: "npm:^8.0.1"
+    escalade: "npm:^3.1.1"
+    get-caller-file: "npm:^2.0.5"
+    require-directory: "npm:^2.1.1"
+    string-width: "npm:^4.2.3"
+    y18n: "npm:^5.0.5"
+    yargs-parser: "npm:^21.1.1"
+  checksum: 10c0/ccd7e723e61ad5965fffbb791366db689572b80cca80e0f96aad968dfff4156cd7cd1ad18607afe1046d8241e6fb2d6c08bf7fa7bfb5eaec818735d8feac8f05
   languageName: node
   linkType: hard
 
