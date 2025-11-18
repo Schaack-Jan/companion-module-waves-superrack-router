@@ -65,12 +65,12 @@ class ModuleInstance extends InstanceBase {
                 id: 'info_intro',
                 label: 'Info',
                 value:
-                    'Dieses Modul eröffnet keine eigene MIDI-Verbindung. Lege zusätzlich eine Generic-MIDI Instanz an und verwende dort Aktionen (CC / Note / Program) mit den unten genannten Variablen.'
+                    'This module does not open its own MIDI connection. Additionally, create a Generic-MIDI instance and use actions there (CC) with the variables from the help.'
             },
             {
                 type: 'dropdown',
                 id: 'logLevel',
-                label: 'Log Level',
+                label: 'Log level',
                 choices: [
                     {id: 'error', label: 'error'},
                     {id: 'warn', label: 'warn'},
@@ -82,7 +82,7 @@ class ModuleInstance extends InstanceBase {
             {
                 type: 'dropdown',
                 id: 'maxRacks',
-                label: 'Rack Configuration',
+                label: 'Rack configuration',
                 choices: [
                     {id: 64, label: '64'},
                     {id: 32, label: '32'},
@@ -95,14 +95,13 @@ class ModuleInstance extends InstanceBase {
             {
                 type: 'textinput',
                 id: 'midiMap',
-                label: 'superrack-midi-map.json',
+                label: 'Superrack MIDI Map (JSON)',
                 width: 12,
                 default: this._json.midi ? this._json.midi : JSON.stringify(superrackMidiMap),
                 multiline: true,
             },
         ]
 
-        // Dynamisch Felder für Rack-Kanal-Indizes hinzufügen
         const maxRacks = parseInt(this.config?.maxRacks, 10) || this.state.maxRacks || 64
         for (let i = 1; i <= maxRacks; i++) {
             const key = `rack_channel_index_${i}`
@@ -158,7 +157,7 @@ class ModuleInstance extends InstanceBase {
             controller = String(step.program)
             value = ''
         } else {
-            this._log('warn', 'Unbekannter MIDI Typ', {type: step.type})
+            this._log('warn', 'unknown MIDI Type', {type: step.type})
             return
         }
         this.setVariableValues({
@@ -168,8 +167,7 @@ class ModuleInstance extends InstanceBase {
             midi_last_value: value,
             last_action_timestamp: Date.now()
         })
-        this._log('debug', 'MIDI Step vorbereitet', {status, ch, controller, value})
-        // Generic-MIDI Aktionen können jetzt die Variablen auslesen
+        this._log('debug', 'MIDI step prepared', {status, ch, controller, value})
     }
 
     _shouldLog(level) {
@@ -329,11 +327,11 @@ class ModuleInstance extends InstanceBase {
 
     async routeRack(rackId) {
         if (rackId == null) {
-            this._log('warn', 'routeRack ohne RackId');
+            this._log('warn', 'routeRack without rackid');
             return
         }
         if (this.state.sequenceRunning) {
-            this._log('warn', 'Sequenz läuft – Rack verworfen', {rackId});
+            this._log('warn', 'sequence running – skipping rack', {rackId});
             return
         }
         this.state.sequenceRunning = true
@@ -342,45 +340,45 @@ class ModuleInstance extends InstanceBase {
         this._updateVariables()
         await this._executeRackSequence(rackId)
         this.state.sequenceRunning = false
-        this._log('info', 'routeRack fertig', {rackId})
+        this._log('info', 'routeRack completed', {rackId})
     }
 
     async routeSnapshot(snapshotId) {
         const hotSnapshots = this._buildHotSnapshotChoices()
         const snapshot = hotSnapshots.find(s => s.id === snapshotId)
         if (!snapshot) {
-            this._log('warn', 'Hot Snapshot nicht gefunden', {snapshotId});
+            this._log('warn', 'hot snapshot not found', {snapshotId});
             return
         }
         this._sendMidiStep(snapshot.midi)
-        this._log('info', 'Hot Snapshot ausführen', {snapshotId, midi: snapshot.midi})
+        this._log('info', 'execute hot snapshot', {snapshotId, midi: snapshot.midi})
     }
 
     async routePlugin(pluginId) {
         const hotPlugins = this._buildHotPluginChoices()
         const plugin = hotPlugins.find(s => s.id === pluginId)
         if (!plugin) {
-            this._log('warn', 'Hot Snapshot nicht gefunden', {pluginId});
+            this._log('warn', 'hot plugin not found', {pluginId});
             return
         }
         this._sendMidiStep(plugin.midi)
-        this._log('info', 'Hot Plugin ausführen', {pluginId, midi: plugin.midi})
+        this._log('info', 'execute hot plugin', {pluginId, midi: plugin.midi})
     }
 
     async _executeRackSequence(rackId) {
         const rack = this.state.rackMidiMap?.racks?.[rackId]
         if (!rack) {
-            this._log('warn', 'Rack nicht gefunden', {rackId});
+            this._log('warn', 'rack not found', {rackId});
             return
         }
         if (!rack.enabled) {
-            this._log('debug', 'Rack disabled', {rackId});
+            this._log('debug', 'rack disabled', {rackId});
             return
         }
-        this._log('info', 'Rack Sequenz start', {rackId, steps: rack.midiSteps.length})
+        this._log('info', 'rack sequence started', {rackId, steps: rack.midiSteps.length})
         for (const step of rack.midiSteps) {
             if (Date.now() - this.state.sequenceStartTs > this.state.sequenceTimeoutMs) {
-                this._log('error', 'Timeout während Rack Sequenz', {rackId});
+                this._log('error', 'timeout during rack sequence', {rackId});
                 this.state.failedStepsTotal++;
                 this._updateVariables();
                 return
@@ -388,18 +386,18 @@ class ModuleInstance extends InstanceBase {
             try {
                 this._sendMidiStep(step)
             } catch (e) {
-                this._log('error', 'MIDI Step Fehler', {rackId, error: e.message});
+                this._log('error', 'midi step error', {rackId, error: e.message});
                 this.state.failedStepsTotal++;
                 this._updateVariables()
             }
             if (step.delay > 0) await new Promise(res => setTimeout(res, step.delay))
         }
-        this._log('info', 'Rack Sequenz Ende', {rackId})
+        this._log('info', 'ended rack sequence', {rackId})
     }
 }
 
 try {
     runEntrypoint(ModuleInstance, UpgradeScripts)
 } catch (e) {
-    console.error('[BOOT][FATAL] runEntrypoint Fehler', e)
+    console.error('[BOOT][FATAL] runEntrypoint error', e)
 }
