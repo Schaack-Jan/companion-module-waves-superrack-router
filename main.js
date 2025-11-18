@@ -69,9 +69,6 @@ class ModuleInstance extends InstanceBase {
 
     async configUpdated(config) {
         this.config = config
-        const old = this.midiPortName
-        this.midiPortName = config.midiPortName || ''
-        if (old !== this.midiPortName) this._reopenMidiPort()
         this._applyConfig()
         await this._loadAllJsonFromConfig()
         try {
@@ -139,12 +136,17 @@ class ModuleInstance extends InstanceBase {
         // Dynamisch Felder für Rack-Kanal-Indizes hinzufügen
         const maxRacks = parseInt(this.config?.maxRacks, 10) || this.state.maxRacks || 64
         for (let i = 1; i <= maxRacks; i++) {
+            const key = `rack_channel_index_${i}`
+            if (!this.config[key] || this.config[key] === '') {
+                this.config[key] = `${i}`
+            }
+
             fields.push({
                 type: 'textinput',
-                id: `rack_channel_index_${i}`,
+                id: key,
                 label: `Kanal Index für Rack ${i}`,
                 width: 3,
-                default: this.config?.[`rack_channel_index_${i}`] || '',
+                value: this.config?.[key] ?? `${i}`,
             })
         }
 

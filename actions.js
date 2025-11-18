@@ -39,6 +39,36 @@ module.exports = function (self) {
             callback: async (event) => {
                 await self.routePlugin(event.options.pluginId)
             },
-        }
+        },
+        trigger_channel: {
+            name: 'Trigger Channel',
+            options: [
+                {
+                    id: 'channelIndex',
+                    type: 'textinput',
+                    label: 'Kanal Index',
+                    default: '',
+                },
+            ],
+            callback: async (event) => {
+                const channelIndex = event.options.channelIndex
+                let foundRackId = null
+
+                // Suche das Rack, dessen Index in der Config dem übergebenen entspricht
+                const maxRacks = parseInt(self.config?.maxRacks, 10) || self.state.maxRacks || 64
+                for (let i = 1; i <= maxRacks; i++) {
+                    if (self.config?.[`rack_channel_index_${i}`] == channelIndex) {
+                        foundRackId = i
+                        break
+                    }
+                }
+
+                if (foundRackId) {
+                    await self.routeRack(foundRackId)
+                } else {
+                    self._log('warn', `Kein Rack für Kanal Index ${channelIndex} gefunden`)
+                }
+            },
+        },
 	})
 }
