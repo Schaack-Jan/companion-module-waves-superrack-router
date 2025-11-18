@@ -1,6 +1,7 @@
 module.exports = function (self) {
-	const sourceChoices = self._buildSourceChoices ? self._buildSourceChoices() : []
 	const rackChoices = self._buildRackChoices ? self._buildRackChoices() : []
+    const hotSnapshotChoices = self._buildHotSnapshotChoices ? self._buildHotSnapshotChoices() : []
+    const hotPluginChoices = self._buildHotPluginChoices ? self._buildHotPluginChoices() : []
 
 	self.setActionDefinitions({
 		route_rack: {
@@ -20,6 +21,24 @@ module.exports = function (self) {
 				try { require('fs').writeFileSync(p, JSON.stringify(self.state.routingMatrix,null,2)) } catch {}
 				self._log('info','Routing Matrix geleert')
 			},
-		}
+		},
+        route_hot_snapshots: {
+            name: 'Route einzelnen Hot Snapshot',
+            options: [
+                { id: 'snapshotId', type: 'dropdown', label: 'Hot Snapshot', choices: hotSnapshotChoices, default: hotSnapshotChoices[0]?.id },
+            ],
+            callback: async (event) => {
+                await self.routeSnapshot(event.options.snapshotId)
+            },
+        },
+        route_hot_plugins: {
+            name: 'Route einzelnes Hot Plugin',
+            options: [
+                { id: 'pluginId', type: 'dropdown', label: 'Hot Plugin', choices: hotPluginChoices, default: hotPluginChoices[0]?.id },
+            ],
+            callback: async (event) => {
+                await self.routePlugin(event.options.pluginId)
+            },
+        }
 	})
 }

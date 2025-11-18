@@ -175,21 +175,21 @@ class ModuleInstance extends InstanceBase {
     _sendMidiStep(step) {
         // Statt direkt zu senden: Variablen setzen, von Generic-MIDI aus nutzbar
         const ch = step.channel
-        let data1 = ''
-        let data2 = ''
+        let controller = ''
+        let value = ''
         let status = ''
         if (step.type === 'cc') {
             status = 'cc'
-            data1 = String(step.controller)
-            data2 = String(step.value)
+            controller = String(step.controller)
+            value = String(step.value)
         } else if (step.type === 'noteon') {
             status = 'noteon'
-            data1 = String(step.note)
-            data2 = String(step.value)
+            controller = String(step.note)
+            value = String(step.value)
         } else if (step.type === 'program') {
             status = 'program'
-            data1 = String(step.program)
-            data2 = ''
+            controller = String(step.program)
+            value = ''
         } else {
             this._log('warn', 'Unbekannter MIDI Typ', {type: step.type})
             return
@@ -197,10 +197,11 @@ class ModuleInstance extends InstanceBase {
         this.setVariableValues({
             midi_last_type: status,
             midi_last_channel: ch,
-            midi_last_data1: data1,
-            midi_last_data2: data2,
+            midi_last_controller: controller,
+            midi_last_value: value,
+            last_action_timestamp: Date.now()
         })
-        this._log('debug', 'MIDI Step vorbereitet', {status, ch, data1, data2})
+        this._log('debug', 'MIDI Step vorbereitet', {status, ch, controller, value})
         // Generic-MIDI Aktionen können jetzt die Variablen auslesen
     }
 
@@ -234,66 +235,6 @@ class ModuleInstance extends InstanceBase {
         if (kind === 'wing') this.state.wingIndexMap = parsed
         else if (kind === 'routing') this.state.routingMatrix = parsed
         else if (kind === 'midi') this.state.rackMidiMap = parsed
-    }
-
-    applyJson(kind, text) {
-        try {
-            const obj = JSON.parse(text)
-            let valid = false
-            if (kind === 'wing') valid = this._validateWingIndexMap(obj)
-            else if (kind === 'routing') valid = this._validateRoutingMatrix(obj)
-            else if (kind === 'midi') valid = this._validateRackMidiMap(obj)
-            if (!valid) {
-                this._log('warn', 'Apply JSON ungültig', {kind});
-                return false
-            }
-
-            if (kind === 'wing') this.state.wingIndexMap = obj
-            else if (kind === 'routing') this.state.routingMatrix = obj
-            else if (kind === 'midi') this.state.rackMidiMap = obj
-
-            this._jsonCacheText[kind] = text
-            if (this.config) {
-                if (kind === 'wing') this.config.wingJsonText = text
-                else if (kind === 'routing') this.config.routingJsonText = text
-                else if (kind === 'midi') this.config.midiJsonText = text
-                if (typeof this.saveConfig === 'function') {
-                    try {
-                        this.saveConfig()
-                    } catch {
-                    }
-                }
-            }
-            this._log('info', 'JSON angewendet', {kind})
-            if (kind === 'wing') {
-                this.updateActions();
-                this._buildPresets()
-            }
-            return true
-        } catch (e) {
-            this._log('error', 'Apply JSON Fehler', {kind, error: e.message})
-            return false
-        }
-    }
-
-    resetRackSteps(rackId) {
-        const rack = this.state.rackMidiMap?.racks?.[rackId]
-        if (!rack) {
-            this._log('warn', 'resetRackSteps Rack nicht gefunden', {rackId});
-            return
-        }
-        rack.midiSteps = []
-        this._jsonCacheText.midi = JSON.stringify(this.state.rackMidiMap, null, 2)
-        if (this.config) {
-            this.config.midiJsonText = this._jsonCacheText.midi
-            if (typeof this.saveConfig === 'function') {
-                try {
-                    this.saveConfig()
-                } catch {
-                }
-            }
-        }
-        this._log('info', 'Rack Steps geleert', {rackId})
     }
 
     _validateWingIndexMap(obj) {
@@ -363,6 +304,64 @@ class ModuleInstance extends InstanceBase {
             last_routed_racks: this.state.lastRoutedRacks.join(','),
             last_action_timestamp: this.state.lastActionTimestamp,
             failed_steps_total: this.state.failedStepsTotal,
+        })
+    }
+
+    _buildHotSnapshotChoices() {
+        const racks = this.state.rackMidiMap?.racks || {}
+
+        let firstSteps = []
+        for (const rackId in racks) {
+            const steps = racks[rackId]?.midiSteps
+            if (Array.isArray(steps) && steps.length > 0) {
+                firstSteps.push({
+                    ...steps[0],
+                })
+            }
+        }
+
+        firstSteps = firstSteps.filter(
+            (step, index, self) =>
+                index === self.findIndex((s) => (s.channel === step.channel && s.controller === step.controller))
+        )
+
+        return firstSteps.map(function (step, index) {
+            let label = 'Hot Snapshot - ' + (step.controller + 1)
+
+            return {
+                id: index,
+                label: label,
+                midi: step
+            }
+        })
+    }
+
+    _buildHotPluginChoices() {
+        const racks = this.state.rackMidiMap?.racks || {}
+
+        let firstSteps = []
+        for (const rackId in racks) {
+            const steps = racks[rackId]?.midiSteps
+            if (Array.isArray(steps) && steps.length > 0) {
+                firstSteps.push({
+                    ...steps[1],
+                })
+            }
+        }
+
+        firstSteps = firstSteps.filter(
+            (step, index, self) =>
+                index === self.findIndex((s) => (s.channel === step.channel && s.controller === step.controller))
+        )
+
+        return firstSteps.map(function (step, index) {
+            let label = 'Hot Plugin - ' + (step.controller + 1)
+
+            return {
+                id: index,
+                label: label,
+                midi: step
+            }
         })
     }
 
@@ -440,11 +439,32 @@ class ModuleInstance extends InstanceBase {
         this.state.sequenceRunning = true
         this.state.sequenceStartTs = Date.now()
         this.state.lastRoutedRacks = [rackId]
-        this.state.lastActionTimestamp = Date.now()
         this._updateVariables()
         await this._executeRackSequence(rackId)
         this.state.sequenceRunning = false
         this._log('info', 'routeRack fertig', {rackId})
+    }
+
+    async routeSnapshot(snapshotId) {
+        const hotSnapshots = this._buildHotSnapshotChoices()
+        const snapshot = hotSnapshots.find(s => s.id === snapshotId)
+        if (!snapshot) {
+            this._log('warn', 'Hot Snapshot nicht gefunden', {snapshotId});
+            return
+        }
+        this._sendMidiStep(snapshot.midi)
+        this._log('info', 'Hot Snapshot ausführen', {snapshotId, midi: snapshot.midi})
+    }
+
+    async routePlugin(pluginId) {
+        const hotPlugins = this._buildHotPluginChoices()
+        const plugin = hotPlugins.find(s => s.id === pluginId)
+        if (!plugin) {
+            this._log('warn', 'Hot Snapshot nicht gefunden', {pluginId});
+            return
+        }
+        this._sendMidiStep(plugin.midi)
+        this._log('info', 'Hot Plugin ausführen', {pluginId, midi: plugin.midi})
     }
 
     async _executeRackSequence(rackId) {
