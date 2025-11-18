@@ -28,7 +28,7 @@ module.exports = function (self) {
                     self._log('warn', 'Keine Rack Choices verfügbar')
                     return
                 }
-                const id = rack1Id || rackChoices[0].id
+                const id = rackChoices[0].id
                 await self.routeRack(id)
             },
         },
