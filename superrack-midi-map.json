@@ -980,8 +980,8 @@
         }
       ]
     },
-    "100": {
-      "name": "Rack 100",
+    "50": {
+      "name": "Rack 50",
       "enabled": true,
       "midiSteps": [
         {
