@@ -1,36 +1,11 @@
 // Kopf von main.js (ersetzen / vor bestehendem Code einfügen)
 console.info('[BOOT] Datei wird geladen')
 
-function safeRequire(mod, stub) {
-    try {
-        const r = require(mod)
-        console.info('[BOOT] require OK:', mod)
-        return r
-    } catch (e) {
-        console.error('[BOOT][FATAL] require FEHLER:', mod, e)
-        return stub
-    }
-}
-
-function _mkdirSafe(p) {
-    try {
-        if (!fs.existsSync(p)) fs.mkdirSync(p, { recursive: true })
-    } catch (e) {
-        console.error('[BOOT][FATAL] mkdir Fehler', p, e.message)
-    }
-}
-
-const { InstanceBase, runEntrypoint, InstanceStatus } = safeRequire('@companion-module/base', {
-    InstanceBase: class {},
-    runEntrypoint: () => console.info('[BOOT] Stub runEntrypoint ausgeführt'),
-    InstanceStatus: { Ok: 'ok', Error: 'error' },
-})
-
-// Ab hier wie zuvor:
-const UpgradeScripts = safeRequire('./upgrades', {})
-const UpdateActions = safeRequire('./actions', () => {})
-const UpdateFeedbacks = safeRequire('./feedbacks', () => {})
-const UpdateVariableDefinitions = safeRequire('./variables', () => {})
+const { InstanceBase, runEntrypoint, InstanceStatus } = require('@companion-module/base')
+const UpgradeScripts = require('./upgrades')
+const UpdateActions = require('./actions')
+const UpdateFeedbacks = require('./feedbacks')
+const UpdateVariableDefinitions = require('./variables')
 
 console.info('[BOOT] Nach allen requires')
 
@@ -49,9 +24,6 @@ process.on('exit', (code) => {
 process.on('SIGINT', () => {
     console.error('[EXIT] SIGINT')
 })
-
-let EasyMidi = null
-try { EasyMidi = require('easymidi') } catch { /* optional */ }
 
 const FS_PERSIST = false
 
@@ -73,8 +45,6 @@ class ModuleInstance extends InstanceBase {
             sequenceTimeoutMs: 1000,
         }
         this.logLevel = 'info'
-        this.midiOutputName = ''
-        this.midiOut = null
         this._jsonCacheText = { wing: '', routing: '', midi: '' }
     }
 
@@ -82,38 +52,48 @@ class ModuleInstance extends InstanceBase {
         this.config = config
         this._applyConfig()
         await this._loadAllJsonFromConfig()
-        this._openMidi()
         this.updateStatus(InstanceStatus.Ok)
-        try { this.updateActions() } catch {}
-        try { this.updateFeedbacks() } catch {}
-        try { this.updateVariableDefinitions() } catch {}
-        try { this._buildPresets() } catch {}
+        this.updateActions()
+        this.updateFeedbacks()
+        this.updateVariableDefinitions()
+        this._buildPresets()
     }
 
-	// When module gets deleted
-	async destroy() {
-		this.log('debug', 'destroy')
-		if (this.midiOut) {
-			try { this.midiOut.close() } catch {}
-			this.midiOut = null
-		}
-	}
+    async destroy() {
+        this.log('debug', 'destroy')
+        // Keine eigene Schließung nötig, Connection wird von Companion verwaltet
+        this._closeMidiPort()
+    }
 
     async configUpdated(config) {
         this.config = config
+        const old = this.midiPortName
+        this.midiPortName = config.midiPortName || ''
+        if (old !== this.midiPortName) this._reopenMidiPort()
         this._applyConfig()
         await this._loadAllJsonFromConfig()
-        this._openMidi()
         try { this.updateActions() } catch {}
         try { this.updateFeedbacks() } catch {}
         try { this.updateVariableDefinitions() } catch {}
         try { this._buildPresets() } catch {}
     }
 
-	// Return config fields for web config
     getConfigFields() {
         return [
-            { type: 'static-text', id: 'info', label: 'Info', value: 'Schreibloser Modus – Daten nur in diesen Feldern persistent.' },
+            {
+                type: 'static-text',
+                id: 'info_intro',
+                label: 'Info',
+                value:
+                    'Dieses Modul eröffnet keine eigene MIDI-Verbindung. Lege zusätzlich eine Generic-MIDI Instanz an und verwende dort Aktionen (CC / Note / Program) mit den unten genannten Variablen.'
+            },
+            {
+                type: 'static-text',
+                id: 'info_vars',
+                label: 'Verfügbare Variablen',
+                value:
+                    '$(waves-superrack-router:midi\\_last\\_type), $(waves-superrack-router:midi\\_last\\_channel), $(waves-superrack-router:midi\\_last\\_data1), $(waves-superrack-router:midi\\_last\\_data2)'
+            },
             {
                 type: 'dropdown',
                 id: 'logLevel',
@@ -124,12 +104,12 @@ class ModuleInstance extends InstanceBase {
                     { id: 'info', label: 'info' },
                     { id: 'debug', label: 'debug' },
                 ],
-                default: 'info',
+                default: this.logLevel || 'info',
             },
             {
                 type: 'dropdown',
                 id: 'maxRacks',
-                label: 'Max Racks',
+                label: 'Rack Configuration',
                 choices: [
                     { id: 64, label: '64' },
                     { id: 32, label: '32' },
@@ -137,12 +117,38 @@ class ModuleInstance extends InstanceBase {
                     { id: 8, label: '8' },
                     { id: 4, label: '4' },
                 ],
-                default: 64,
+                default: this.state.maxRacks || 64,
             },
-            { type: 'textinput', id: 'midiOutput', label: 'MIDI Output Name', width: 8 },
-            { type: 'textinput', id: 'wingJsonText', label: 'wing-index-map.json', width: 12, default: this._jsonCacheText.wing || '', multiline: true },
-            { type: 'textinput', id: 'routingJsonText', label: 'routing-matrix.json', width: 12, default: this._jsonCacheText.routing || '', multiline: true },
-            { type: 'textinput', id: 'midiJsonText', label: 'superrack-midi-map.json', width: 12, default: this._jsonCacheText.midi || '', multiline: true },
+            {
+                type: 'static-text',
+                id: 'info_persist',
+                label: 'Persistenz',
+                value: 'Schreibloser Modus – JSON wird nur in diesen Feldern gehalten.'
+            },
+            {
+                type: 'textinput',
+                id: 'wingJsonText',
+                label: 'wing-index-map.json',
+                width: 12,
+                default: this._jsonCacheText.wing || '',
+                multiline: true,
+            },
+            {
+                type: 'textinput',
+                id: 'routingJsonText',
+                label: 'routing-matrix.json',
+                width: 12,
+                default: this._jsonCacheText.routing || '',
+                multiline: true,
+            },
+            {
+                type: 'textinput',
+                id: 'midiJsonText',
+                label: 'superrack-midi-map.json',
+                width: 12,
+                default: this._jsonCacheText.midi || '',
+                multiline: true,
+            },
         ]
     }
 
@@ -150,10 +156,42 @@ class ModuleInstance extends InstanceBase {
         this.logLevel = this.config?.logLevel || 'info'
         const mr = parseInt(this.config?.maxRacks, 10)
         if ([64, 32, 16, 8, 4].includes(mr)) this.state.maxRacks = mr
-        this.midiOutputName = this.config?.midiOutput || ''
+        this.midiConnectionId = this.config?.midiConnectionId || ''
         if (this.config?.wingJsonText) this._jsonCacheText.wing = this.config.wingJsonText
         if (this.config?.routingJsonText) this._jsonCacheText.routing = this.config.routingJsonText
         if (this.config?.midiJsonText) this._jsonCacheText.midi = this.config.midiJsonText
+    }
+
+    _sendMidiStep(step) {
+        // Statt direkt zu senden: Variablen setzen, von Generic-MIDI aus nutzbar
+        const ch = step.channel
+        let data1 = ''
+        let data2 = ''
+        let status = ''
+        if (step.type === 'cc') {
+            status = 'cc'
+            data1 = String(step.controller)
+            data2 = String(step.value)
+        } else if (step.type === 'noteon') {
+            status = 'noteon'
+            data1 = String(step.note)
+            data2 = String(step.value)
+        } else if (step.type === 'program') {
+            status = 'program'
+            data1 = String(step.program)
+            data2 = ''
+        } else {
+            this._log('warn','Unbekannter MIDI Typ',{ type: step.type })
+            return
+        }
+        this.setVariableValues({
+            midi_last_type: status,
+            midi_last_channel: ch,
+            midi_last_data1: data1,
+            midi_last_data2: data2,
+        })
+        this._log('debug','MIDI Step vorbereitet',{ status, ch, data1, data2 })
+        // Generic-MIDI Aktionen können jetzt die Variablen auslesen
     }
 
     _shouldLog(level) {
@@ -227,38 +265,6 @@ class ModuleInstance extends InstanceBase {
         this._log('info', 'Rack Steps geleert', { rackId })
     }
 
-	async _loadAllJson() {
-		await this._loadJson('wing', (j)=> this._validateWingIndexMap(j))
-		await this._loadJson('routing', (j)=> this._validateRoutingMatrix(j))
-		await this._loadJson('midi', (j)=> this._validateRackMidiMap(j))
-	}
-    async _loadJson(kind, validateFn) {
-        try {
-            const p = this._dataDirPath(this.jsonFiles[kind])
-            if (!fs.existsSync(p)) {
-                let def
-                if (kind === 'wing') def = { channels: [], buses: [], mains: [], matrices: [] }
-                else if (kind === 'routing') def = { matrix: {} }
-                else if (kind === 'midi') def = { racks: {} }
-            }
-
-            let raw
-
-            let json
-
-            if (validateFn(json)) {
-                if (kind === 'wing') this.state.wingIndexMap = json
-                else if (kind === 'routing') this.state.routingMatrix = json
-                else if (kind === 'midi') this.state.rackMidiMap = json
-                this._jsonCacheText[kind] = raw
-                this._log('info', 'JSON geladen', { kind })
-            } else {
-                this._log('warn', 'JSON ungültig', { kind })
-            }
-        } catch (e) {
-            this._log('error', 'Load JSON Fehler', { kind, error: e.message })
-        }
-    }
 	_validateWingIndexMap(obj) {
 		if (!obj) return false
 		if (!Array.isArray(obj.channels)||!Array.isArray(obj.buses)||!Array.isArray(obj.mains)||!Array.isArray(obj.matrices)) return false
@@ -369,27 +375,6 @@ class ModuleInstance extends InstanceBase {
 			if (step.delay>0) await new Promise(res=> setTimeout(res, step.delay))
 		}
 		this._log('info','Rack Sequenz Ende',{rackId})
-	}
-	_sendMidiStep(step) {
-		if (!this.midiOut) { this._log('warn','Kein MIDI Output geöffnet – Step stumm',{step}) ; return }
-		const ch = step.channel - 1
-		let bytes
-		if (step.type==='cc') bytes = [0xB0 + ch, step.controller, step.value]
-		else if (step.type==='noteon') bytes = [0x90 + ch, step.note, step.value]
-		else if (step.type==='program') bytes = [0xC0 + ch, step.program]
-		if (step.type==='program' && step.value !== undefined) this._log('debug','Program value vorhanden',{value: step.value})
-		try {
-			if (step.type==='cc') this.midiOut.send('cc', { channel: ch, controller: step.controller, value: step.value })
-			else if (step.type==='noteon') this.midiOut.send('noteon', { channel: ch, note: step.note, velocity: step.value })
-			else if (step.type==='program') this.midiOut.send('program', { channel: ch, number: step.program })
-			this._log('debug','MIDI gesendet',{type: step.type, bytes})
-		} catch(e) { throw e }
-	}
-	_openMidi() {
-		if (!EasyMidi) { this._log('warn','easymidi nicht verfügbar'); return }
-		if (this.midiOut) { try { this.midiOut.close() } catch{} this.midiOut = null }
-		if (!this.midiOutputName) return
-		try { this.midiOut = new EasyMidi.Output(this.midiOutputName, false); this._log('info','MIDI Output geöffnet',{name:this.midiOutputName}) } catch(e) { this._log('error','MIDI Output Fehler',{error:e.message}) }
 	}
 
 	_buildPresets() {
