@@ -123,7 +123,7 @@ class ModuleInstance extends InstanceBase {
     }
 
     _applyConfig() {
-        this.logLevel = this.config?.logLevel || 'info'
+        this.logLevel = this.config?.logLevel || 'error'
         const mr = parseInt(this.config?.maxRacks, 10)
         if ([64, 32, 16, 8, 4].includes(mr)) this.state.maxRacks = mr
 
