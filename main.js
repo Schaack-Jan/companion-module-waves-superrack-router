@@ -6,6 +6,7 @@ const UpgradeScripts = require('./upgrades')
 const UpdateActions = require('./actions')
 const UpdateFeedbacks = require('./feedbacks')
 const UpdateVariableDefinitions = require('./variables')
+const superrackMidiMap = require('./superrack-midi-map.json')
 
 console.info('[BOOT] Nach allen requires')
 
@@ -155,7 +156,7 @@ class ModuleInstance extends InstanceBase {
                 id: 'midiJsonText',
                 label: 'superrack-midi-map.json',
                 width: 12,
-                default: this._jsonCacheText.midi || '',
+                default: this._jsonCacheText.midi || JSON.stringify(superrackMidiMap, null, 2),
                 multiline: true,
             },
         ]
