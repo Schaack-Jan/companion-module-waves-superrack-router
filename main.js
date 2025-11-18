@@ -25,8 +25,6 @@ process.on('SIGINT', () => {
     console.error('[EXIT] SIGINT')
 })
 
-const FS_PERSIST = false
-
 class ModuleInstance extends InstanceBase {
     constructor(internal) {
         super(internal)
@@ -62,7 +60,6 @@ class ModuleInstance extends InstanceBase {
     async destroy() {
         this.log('debug', 'destroy')
         // Keine eigene Schließung nötig, Connection wird von Companion verwaltet
-        this._closeMidiPort()
     }
 
     async configUpdated(config) {

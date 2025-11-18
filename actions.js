@@ -21,6 +21,17 @@ module.exports = function (self) {
 				await self.routeRack(event.options.rackId)
 			},
 		},
+        route_rack_1: {
+            name: 'Route Rack 1',
+            callback: async () => {
+                if (!rackChoices.length) {
+                    self._log('warn', 'Keine Rack Choices verfügbar')
+                    return
+                }
+                const id = rack1Id || rackChoices[0].id
+                await self.routeRack(id)
+            },
+        },
 		reload_json: {
 			name: 'Reload JSON Dateien',
 			callback: async () => { await self._loadAllJson(); self.updateActions(); self._buildPresets() },
