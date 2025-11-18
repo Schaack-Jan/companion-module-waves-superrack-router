@@ -1,5 +1,0 @@
-{
-  "__comment": "Key = Wing source index (string); Value = array of target SuperRack Rack IDs (execution order = array order)",
-  "matrix": {}
-}
-

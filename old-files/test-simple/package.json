@@ -1,7 +1,0 @@
-{
-  "name": "companion-module-test-simple",
-  "version": "0.0.1",
-  "description": "Minimal Test Modul für Companion Erkennung",
-  "main": "index.js"
-}
-
