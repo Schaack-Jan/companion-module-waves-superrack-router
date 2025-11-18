@@ -56,6 +56,10 @@ class ModuleInstance extends InstanceBase {
         this.updateFeedbacks()
         this.updateVariableDefinitions()
         this._buildPresets()
+
+        /*console.log(this._jsonCacheText.midi)
+        console.log(JSON.stringify(superrackMidiMap, null, 2))
+        console.log(superrackMidiMap)*/
     }
 
     async destroy() {
@@ -96,13 +100,6 @@ class ModuleInstance extends InstanceBase {
                 label: 'Info',
                 value:
                     'Dieses Modul eröffnet keine eigene MIDI-Verbindung. Lege zusätzlich eine Generic-MIDI Instanz an und verwende dort Aktionen (CC / Note / Program) mit den unten genannten Variablen.'
-            },
-            {
-                type: 'static-text',
-                id: 'info_vars',
-                label: 'Verfügbare Variablen',
-                value:
-                    '$(waves-superrack-router:midi\\_last\\_type), $(waves-superrack-router:midi\\_last\\_channel), $(waves-superrack-router:midi\\_last\\_data1), $(waves-superrack-router:midi\\_last\\_data2)'
             },
             {
                 type: 'dropdown',
@@ -166,7 +163,7 @@ class ModuleInstance extends InstanceBase {
         this.logLevel = this.config?.logLevel || 'info'
         const mr = parseInt(this.config?.maxRacks, 10)
         if ([64, 32, 16, 8, 4].includes(mr)) this.state.maxRacks = mr
-        this.midiConnectionId = this.config?.midiConnectionId || ''
+
         if (this.config?.wingJsonText) this._jsonCacheText.wing = this.config.wingJsonText
         if (this.config?.routingJsonText) this._jsonCacheText.routing = this.config.routingJsonText
         if (this.config?.midiJsonText) this._jsonCacheText.midi = this.config.midiJsonText
