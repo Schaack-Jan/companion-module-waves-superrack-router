@@ -127,12 +127,6 @@ class ModuleInstance extends InstanceBase {
                 default: this.state.maxRacks || 64,
             },
             {
-                type: 'static-text',
-                id: 'info_persist',
-                label: 'Persistenz',
-                value: 'Schreibloser Modus – JSON wird nur in diesen Feldern gehalten.'
-            },
-            {
                 type: 'textinput',
                 id: 'wingJsonText',
                 label: 'wing-index-map.json',
@@ -142,18 +136,10 @@ class ModuleInstance extends InstanceBase {
             },
             {
                 type: 'textinput',
-                id: 'routingJsonText',
-                label: 'routing-matrix.json',
-                width: 12,
-                default: this._jsonCacheText.routing || '',
-                multiline: true,
-            },
-            {
-                type: 'textinput',
                 id: 'midiJsonText',
                 label: 'superrack-midi-map.json',
                 width: 12,
-                default: this._jsonCacheText.midi || JSON.stringify(superrackMidiMap, null, 2),
+                default: this._jsonCacheText.midi || '',
                 multiline: true,
             },
         ]
@@ -217,6 +203,8 @@ class ModuleInstance extends InstanceBase {
         this._parseJsonField('wing', this._validateWingIndexMap, {channels: [], buses: [], mains: [], matrices: []})
         this._parseJsonField('routing', this._validateRoutingMatrix, {matrix: {}})
         this._parseJsonField('midi', this._validateRackMidiMap, {racks: {}})
+
+        //console.log('[LOAD] wingIndexMap', superrackMidiMap)
     }
 
     _parseJsonField(kind, validateFn, defaults) {
