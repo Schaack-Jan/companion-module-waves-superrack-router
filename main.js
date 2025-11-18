@@ -122,7 +122,7 @@ class ModuleInstance extends InstanceBase {
                 id: 'midiJsonText',
                 label: 'superrack-midi-map.json',
                 width: 12,
-                default: this._jsonCacheText.midi || '',
+                default: this._jsonCacheText.midi || JSON.stringify(superrackMidiMap, null, 2),
                 multiline: true,
             },
         ]
