@@ -434,10 +434,8 @@ class ModuleInstance extends InstanceBase {
     }
 }
 
-console.info('[BOOT] runEntrypoint vor Aufruf')
 try {
     runEntrypoint(ModuleInstance, UpgradeScripts)
-    console.info('[BOOT] runEntrypoint aufgerufen')
 } catch (e) {
     console.error('[BOOT][FATAL] runEntrypoint Fehler', e)
 }
