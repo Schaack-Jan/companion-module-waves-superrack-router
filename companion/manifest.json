@@ -7,9 +7,7 @@
 	"license": "MIT",
 	"repository": "git+https://github.com/bitfocus/companion-module-waves-superrack-router.git",
 	"bugs": "https://github.com/bitfocus/companion-module-waves-superrack-router/issues",
-	"maintainers": [
-		{ "name": "Maintainer", "email": "maintainer@example.com" }
-	],
+	"maintainers": [{ "name": "Maintainer", "email": "maintainer@example.com" }],
 	"runtime": {
 		"type": "node22",
 		"api": "nodejs-ipc",
@@ -19,5 +17,5 @@
 	"legacyIds": [],
 	"manufacturer": "Waves",
 	"products": ["Superrack Performer", "Superrack SoundGrid"],
-	"keywords": ["waves","superrack","routing","midi","wing"]
+	"keywords": ["waves", "superrack", "routing", "midi", "wing"]
 }

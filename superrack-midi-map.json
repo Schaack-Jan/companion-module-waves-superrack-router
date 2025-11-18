@@ -1,1285 +1,1284 @@
 {
-  "racks": {
-    "1": {
-      "name": "Rack 1",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 0,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 0,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "2": {
-      "name": "Rack 2",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 0,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 1,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "3": {
-      "name": "Rack 3",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 0,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 2,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "4": {
-      "name": "Rack 4",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 0,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 3,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "5": {
-      "name": "Rack 5",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 0,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 4,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "6": {
-      "name": "Rack 6",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 0,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 5,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "7": {
-      "name": "Rack 7",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 0,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 6,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "8": {
-      "name": "Rack 8",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 0,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 7,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "9": {
-      "name": "Rack 9",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 0,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 8,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "10": {
-      "name": "Rack 10",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 0,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 9,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "11": {
-      "name": "Rack 11",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 0,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 10,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "12": {
-      "name": "Rack 12",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 0,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 11,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "13": {
-      "name": "Rack 13",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 1,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 0,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "14": {
-      "name": "Rack 14",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 1,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 1,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "15": {
-      "name": "Rack 15",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 1,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 2,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "16": {
-      "name": "Rack 16",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 1,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 3,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "17": {
-      "name": "Rack 17",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 1,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 4,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "18": {
-      "name": "Rack 18",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 1,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 5,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "19": {
-      "name": "Rack 19",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 1,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 6,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "20": {
-      "name": "Rack 20",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 1,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 7,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "21": {
-      "name": "Rack 21",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 1,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 8,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "22": {
-      "name": "Rack 22",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 1,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 9,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "23": {
-      "name": "Rack 23",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 1,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 10,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "24": {
-      "name": "Rack 24",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 1,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 11,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "25": {
-      "name": "Rack 25",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 2,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 0,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "26": {
-      "name": "Rack 26",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 2,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 1,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "27": {
-      "name": "Rack 27",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 2,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 2,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "28": {
-      "name": "Rack 28",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 2,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 3,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "29": {
-      "name": "Rack 29",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 2,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 4,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "30": {
-      "name": "Rack 30",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 2,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 5,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "31": {
-      "name": "Rack 31",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 2,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 6,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "32": {
-      "name": "Rack 32",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 2,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 7,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "33": {
-      "name": "Rack 33",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 2,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 8,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "34": {
-      "name": "Rack 34",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 2,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 9,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "35": {
-      "name": "Rack 35",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 2,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 10,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "36": {
-      "name": "Rack 36",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 2,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 11,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "37": {
-      "name": "Rack 37",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 3,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 0,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "38": {
-      "name": "Rack 38",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 3,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 1,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "39": {
-      "name": "Rack 39",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 3,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 2,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "40": {
-      "name": "Rack 40",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 3,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 3,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "41": {
-      "name": "Rack 41",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 3,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 4,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "42": {
-      "name": "Rack 42",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 3,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 5,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "43": {
-      "name": "Rack 43",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 3,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 6,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "44": {
-      "name": "Rack 44",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 3,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 7,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "45": {
-      "name": "Rack 45",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 3,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 8,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "46": {
-      "name": "Rack 46",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 3,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 9,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "47": {
-      "name": "Rack 47",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 3,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 10,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "48": {
-      "name": "Rack 48",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 3,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 11,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "49": {
-      "name": "Rack 49",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 4,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 0,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "50": {
-      "name": "Rack 50",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 4,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 1,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "51": {
-      "name": "Rack 51",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 4,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 2,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "52": {
-      "name": "Rack 52",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 4,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 3,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "53": {
-      "name": "Rack 53",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 4,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 4,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "54": {
-      "name": "Rack 54",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 4,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 5,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "55": {
-      "name": "Rack 55",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 4,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 6,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "56": {
-      "name": "Rack 56",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 4,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 7,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "57": {
-      "name": "Rack 57",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 4,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 8,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "58": {
-      "name": "Rack 58",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 4,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 9,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "59": {
-      "name": "Rack 59",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 4,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 10,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "60": {
-      "name": "Rack 60",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 4,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 11,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "61": {
-      "name": "Rack 61",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 5,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 0,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "62": {
-      "name": "Rack 62",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 5,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 1,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "63": {
-      "name": "Rack 63",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 5,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 2,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    },
-    "64": {
-      "name": "Rack 64",
-      "enabled": true,
-      "midiSteps": [
-        {
-          "type": "cc",
-          "channel": 15,
-          "controller": 5,
-          "value": 127,
-          "delay": 100
-        },
-        {
-          "type": "cc",
-          "channel": 16,
-          "controller": 3,
-          "value": 127,
-          "delay": 100
-        }
-      ]
-    }
-  }
+	"racks": {
+		"1": {
+			"name": "Rack 1",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 0,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 0,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"2": {
+			"name": "Rack 2",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 0,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 1,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"3": {
+			"name": "Rack 3",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 0,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 2,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"4": {
+			"name": "Rack 4",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 0,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 3,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"5": {
+			"name": "Rack 5",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 0,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 4,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"6": {
+			"name": "Rack 6",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 0,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 5,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"7": {
+			"name": "Rack 7",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 0,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 6,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"8": {
+			"name": "Rack 8",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 0,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 7,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"9": {
+			"name": "Rack 9",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 0,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 8,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"10": {
+			"name": "Rack 10",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 0,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 9,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"11": {
+			"name": "Rack 11",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 0,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 10,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"12": {
+			"name": "Rack 12",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 0,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 11,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"13": {
+			"name": "Rack 13",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 1,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 0,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"14": {
+			"name": "Rack 14",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 1,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 1,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"15": {
+			"name": "Rack 15",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 1,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 2,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"16": {
+			"name": "Rack 16",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 1,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 3,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"17": {
+			"name": "Rack 17",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 1,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 4,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"18": {
+			"name": "Rack 18",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 1,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 5,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"19": {
+			"name": "Rack 19",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 1,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 6,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"20": {
+			"name": "Rack 20",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 1,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 7,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"21": {
+			"name": "Rack 21",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 1,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 8,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"22": {
+			"name": "Rack 22",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 1,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 9,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"23": {
+			"name": "Rack 23",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 1,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 10,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"24": {
+			"name": "Rack 24",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 1,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 11,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"25": {
+			"name": "Rack 25",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 2,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 0,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"26": {
+			"name": "Rack 26",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 2,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 1,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"27": {
+			"name": "Rack 27",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 2,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 2,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"28": {
+			"name": "Rack 28",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 2,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 3,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"29": {
+			"name": "Rack 29",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 2,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 4,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"30": {
+			"name": "Rack 30",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 2,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 5,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"31": {
+			"name": "Rack 31",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 2,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 6,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"32": {
+			"name": "Rack 32",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 2,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 7,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"33": {
+			"name": "Rack 33",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 2,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 8,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"34": {
+			"name": "Rack 34",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 2,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 9,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"35": {
+			"name": "Rack 35",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 2,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 10,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"36": {
+			"name": "Rack 36",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 2,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 11,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"37": {
+			"name": "Rack 37",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 3,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 0,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"38": {
+			"name": "Rack 38",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 3,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 1,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"39": {
+			"name": "Rack 39",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 3,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 2,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"40": {
+			"name": "Rack 40",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 3,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 3,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"41": {
+			"name": "Rack 41",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 3,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 4,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"42": {
+			"name": "Rack 42",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 3,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 5,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"43": {
+			"name": "Rack 43",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 3,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 6,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"44": {
+			"name": "Rack 44",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 3,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 7,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"45": {
+			"name": "Rack 45",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 3,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 8,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"46": {
+			"name": "Rack 46",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 3,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 9,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"47": {
+			"name": "Rack 47",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 3,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 10,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"48": {
+			"name": "Rack 48",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 3,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 11,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"49": {
+			"name": "Rack 49",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 4,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 0,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"50": {
+			"name": "Rack 50",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 4,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 1,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"51": {
+			"name": "Rack 51",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 4,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 2,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"52": {
+			"name": "Rack 52",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 4,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 3,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"53": {
+			"name": "Rack 53",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 4,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 4,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"54": {
+			"name": "Rack 54",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 4,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 5,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"55": {
+			"name": "Rack 55",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 4,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 6,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"56": {
+			"name": "Rack 56",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 4,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 7,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"57": {
+			"name": "Rack 57",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 4,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 8,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"58": {
+			"name": "Rack 58",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 4,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 9,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"59": {
+			"name": "Rack 59",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 4,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 10,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"60": {
+			"name": "Rack 60",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 4,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 11,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"61": {
+			"name": "Rack 61",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 5,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 0,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"62": {
+			"name": "Rack 62",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 5,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 1,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"63": {
+			"name": "Rack 63",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 5,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 2,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		},
+		"64": {
+			"name": "Rack 64",
+			"enabled": true,
+			"midiSteps": [
+				{
+					"type": "cc",
+					"channel": 15,
+					"controller": 5,
+					"value": 127,
+					"delay": 100
+				},
+				{
+					"type": "cc",
+					"channel": 16,
+					"controller": 3,
+					"value": 127,
+					"delay": 100
+				}
+			]
+		}
+	}
 }
-
