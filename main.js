@@ -97,7 +97,7 @@ class ModuleInstance extends InstanceBase {
                 id: 'midiMap',
                 label: 'superrack-midi-map.json',
                 width: 12,
-                default: this._json.midi ? this._json.midi : JSON.stringify(superrackMidiMap, null, 2),
+                default: this._json.midi ? this._json.midi : JSON.stringify(superrackMidiMap),
                 multiline: true,
             },
         ]
@@ -129,13 +129,13 @@ class ModuleInstance extends InstanceBase {
 
         if (this.config?.midiMap) {
             if (!this._json.midi) {
-                this._json.midi = JSON.stringify(superrackMidiMap, null, 2)
+                this._json.midi = JSON.stringify(superrackMidiMap)
             } else {
                 this._json.midi = this.config.midiMap
             }
         } else {
-            this._json.midi = JSON.stringify(superrackMidiMap, null, 2)
-            this.config.midiMap = JSON.stringify(superrackMidiMap, null, 2)
+            this._json.midi = JSON.stringify(superrackMidiMap)
+            this.config.midiMap = JSON.stringify(superrackMidiMap)
         }
     }
 
