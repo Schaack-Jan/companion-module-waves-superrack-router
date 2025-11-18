@@ -51,10 +51,10 @@ module.exports = function (self) {
                 },
             ],
             callback: async (event) => {
-                const channelIndex = event.options.channelIndex
-                let foundRackId = null
+                const channelIndexRaw = event.options.channelIndex
+                const channelIndex = await self.parseVariablesInString(channelIndexRaw)
 
-                // Suche das Rack, dessen Index in der Config dem übergebenen entspricht
+                let foundRackId = null
                 const maxRacks = parseInt(self.config?.maxRacks, 10) || self.state.maxRacks || 64
                 for (let i = 1; i <= maxRacks; i++) {
                     if (self.config?.[`rack_channel_index_${i}`] == channelIndex) {
@@ -68,7 +68,7 @@ module.exports = function (self) {
                 } else {
                     self._log('warn', `Kein Rack für Kanal Index ${channelIndex} gefunden`)
                 }
-            },
+            }
         },
 	})
 }
