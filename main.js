@@ -93,7 +93,7 @@ class ModuleInstance extends InstanceBase {
     }
 
     getConfigFields() {
-        return [
+        const fields =  [
             {
                 type: 'static-text',
                 id: 'info_intro',
@@ -128,14 +128,6 @@ class ModuleInstance extends InstanceBase {
             },
             {
                 type: 'textinput',
-                id: 'wingJsonText',
-                label: 'wing-index-map.json',
-                width: 12,
-                default: this._jsonCacheText.wing || '',
-                multiline: true,
-            },
-            {
-                type: 'textinput',
                 id: 'midiJsonText',
                 label: 'superrack-midi-map.json',
                 width: 12,
@@ -143,6 +135,20 @@ class ModuleInstance extends InstanceBase {
                 multiline: true,
             },
         ]
+
+        // Dynamisch Felder für Rack-Kanal-Indizes hinzufügen
+        const maxRacks = parseInt(this.config?.maxRacks, 10) || this.state.maxRacks || 64
+        for (let i = 1; i <= maxRacks; i++) {
+            fields.push({
+                type: 'textinput',
+                id: `rack_channel_index_${i}`,
+                label: `Kanal Index für Rack ${i}`,
+                width: 3,
+                default: this.config?.[`rack_channel_index_${i}`] || '',
+            })
+        }
+
+        return fields
     }
 
     _applyConfig() {
