@@ -9,14 +9,14 @@
           "channel": 15,
           "controller": 0,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 0,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -29,14 +29,14 @@
           "channel": 15,
           "controller": 0,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 1,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -49,14 +49,14 @@
           "channel": 15,
           "controller": 0,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 2,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -69,14 +69,14 @@
           "channel": 15,
           "controller": 0,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 3,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -89,14 +89,14 @@
           "channel": 15,
           "controller": 0,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 4,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -109,14 +109,14 @@
           "channel": 15,
           "controller": 0,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 5,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -129,14 +129,14 @@
           "channel": 15,
           "controller": 0,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 6,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -149,14 +149,14 @@
           "channel": 15,
           "controller": 0,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 7,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -169,14 +169,14 @@
           "channel": 15,
           "controller": 0,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 8,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -189,14 +189,14 @@
           "channel": 15,
           "controller": 0,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 9,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -209,14 +209,14 @@
           "channel": 15,
           "controller": 0,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 10,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -229,14 +229,14 @@
           "channel": 15,
           "controller": 0,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 11,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -249,14 +249,14 @@
           "channel": 15,
           "controller": 1,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 0,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -269,14 +269,14 @@
           "channel": 15,
           "controller": 1,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 1,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -289,14 +289,14 @@
           "channel": 15,
           "controller": 1,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 2,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -309,14 +309,14 @@
           "channel": 15,
           "controller": 1,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 3,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -329,14 +329,14 @@
           "channel": 15,
           "controller": 1,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 4,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -349,14 +349,14 @@
           "channel": 15,
           "controller": 1,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 5,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -369,14 +369,14 @@
           "channel": 15,
           "controller": 1,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 6,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -389,14 +389,14 @@
           "channel": 15,
           "controller": 1,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 7,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -409,14 +409,14 @@
           "channel": 15,
           "controller": 1,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 8,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -429,14 +429,14 @@
           "channel": 15,
           "controller": 1,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 9,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -449,14 +449,14 @@
           "channel": 15,
           "controller": 1,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 10,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -469,14 +469,14 @@
           "channel": 15,
           "controller": 1,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 11,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -489,14 +489,14 @@
           "channel": 15,
           "controller": 2,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 0,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -509,14 +509,14 @@
           "channel": 15,
           "controller": 2,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 1,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -529,14 +529,14 @@
           "channel": 15,
           "controller": 2,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 2,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -549,14 +549,14 @@
           "channel": 15,
           "controller": 2,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 3,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -569,14 +569,14 @@
           "channel": 15,
           "controller": 2,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 4,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -589,14 +589,14 @@
           "channel": 15,
           "controller": 2,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 5,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -609,14 +609,14 @@
           "channel": 15,
           "controller": 2,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 6,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -629,14 +629,14 @@
           "channel": 15,
           "controller": 2,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 7,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -649,14 +649,14 @@
           "channel": 15,
           "controller": 2,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 8,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -669,14 +669,14 @@
           "channel": 15,
           "controller": 2,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 9,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -689,14 +689,14 @@
           "channel": 15,
           "controller": 2,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 10,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -709,14 +709,14 @@
           "channel": 15,
           "controller": 2,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 11,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -729,14 +729,14 @@
           "channel": 15,
           "controller": 3,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 0,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -749,14 +749,14 @@
           "channel": 15,
           "controller": 3,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 1,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -769,14 +769,14 @@
           "channel": 15,
           "controller": 3,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 2,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -789,14 +789,14 @@
           "channel": 15,
           "controller": 3,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 3,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -809,14 +809,14 @@
           "channel": 15,
           "controller": 3,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 4,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -829,14 +829,14 @@
           "channel": 15,
           "controller": 3,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 5,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -849,14 +849,14 @@
           "channel": 15,
           "controller": 3,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 6,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -869,14 +869,14 @@
           "channel": 15,
           "controller": 3,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 7,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -889,14 +889,14 @@
           "channel": 15,
           "controller": 3,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 8,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -909,14 +909,14 @@
           "channel": 15,
           "controller": 3,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 9,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -929,14 +929,14 @@
           "channel": 15,
           "controller": 3,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 10,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -949,14 +949,14 @@
           "channel": 15,
           "controller": 3,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 11,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -969,19 +969,19 @@
           "channel": 15,
           "controller": 4,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 0,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
-    "50": {
-      "name": "Rack 50",
+    "100": {
+      "name": "Rack 100",
       "enabled": true,
       "midiSteps": [
         {
@@ -989,14 +989,14 @@
           "channel": 15,
           "controller": 4,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 1,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -1009,14 +1009,14 @@
           "channel": 15,
           "controller": 4,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 2,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -1029,14 +1029,14 @@
           "channel": 15,
           "controller": 4,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 3,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -1049,14 +1049,14 @@
           "channel": 15,
           "controller": 4,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 4,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -1069,14 +1069,14 @@
           "channel": 15,
           "controller": 4,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 5,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -1089,14 +1089,14 @@
           "channel": 15,
           "controller": 4,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 6,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -1109,14 +1109,14 @@
           "channel": 15,
           "controller": 4,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 7,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -1129,14 +1129,14 @@
           "channel": 15,
           "controller": 4,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 8,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -1149,14 +1149,14 @@
           "channel": 15,
           "controller": 4,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 9,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -1169,14 +1169,14 @@
           "channel": 15,
           "controller": 4,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 10,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -1189,14 +1189,14 @@
           "channel": 15,
           "controller": 4,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 11,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -1209,14 +1209,14 @@
           "channel": 15,
           "controller": 5,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 0,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -1229,14 +1229,14 @@
           "channel": 15,
           "controller": 5,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 1,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -1249,14 +1249,14 @@
           "channel": 15,
           "controller": 5,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 2,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     },
@@ -1269,14 +1269,14 @@
           "channel": 15,
           "controller": 5,
           "value": 127,
-          "delay": 50
+          "delay": 100
         },
         {
           "type": "cc",
           "channel": 16,
           "controller": 3,
           "value": 127,
-          "delay": 50
+          "delay": 100
         }
       ]
     }
