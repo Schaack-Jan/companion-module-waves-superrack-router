@@ -1,37 +1,45 @@
-# Waves SuperRack Router Companion Modul
+# Companion Module – Waves SuperRack Router
 
-Dieses Modul ermöglicht das Routing von WING Quellen zu Waves SuperRack Racks über definierte MIDI-Sequenzen.
+This Companion module allows routing of mixer sources to Waves SuperRack racks and triggers rack-specific MIDI sequences. It is designed for use with the Bitfocus Companion platform.
 
-## Funktionen
-- Quellen (Channel/Bus/Main/Matrix) auswählen und zu konfigurierten Racks routen
-- MIDI Sequenzen: CC, Note On, Program Change (reihenfolge, delay pro Schritt)
-- Editierbare JSON Dateien im Companion dataDir:
-  - `wing-index-map.json` (Struktur der Quellen, Felder: id,index,type,label)
-  - `routing-matrix.json` (matrix: { <sourceIndex>: [rackIds...] })
-  - `superrack-midi-map.json` (racks: { rackId: { name, enabled, midiSteps: [] } })
-- Actions: route_source, route_rack, reload_json, empty_routing, apply_json_*, reset_rack_steps
-- Feedbacks: active_source, rack_last_used, sequence_running
-- Variablen: active_source_index, active_source_label, last_routed_racks, last_action_timestamp, failed_steps_total
-- Presets: Auto Generated für Quellen, Racks und Systemfunktionen
+## Features
 
-## JSON Validierung
-- Rack MIDI Steps max 1000 Einträge
-- Keine doppelten Rack IDs pro Quelle in routing-matrix
-- MIDI Werte innerhalb 0–127, Kanal 1–16
-- Programm-Change optionales Feld `value` wird nur geloggt
+- **Source-to-Rack Mapping:** Map mixer source indices to one or more SuperRack rack IDs using JSON configuration.
+- **MIDI Control:** Send customizable MIDI sequences (CC, Note On, Program Change) per rack, with optional delays.
+- **Actions:** Route a source, reload JSON configuration, set empty routing.
+- **Feedbacks:** Indicate the currently active source and the last used rack.
+- **Variables:** Expose variables such as `active_source_index`, `active_source_label`, `last_routed_racks`, `last_action_timestamp`, and `failed_steps_total` for use in Companion.
+- **Presets:** Automatically generated buttons for each source, reload, and empty routing.
+- **JSON Edit UI:** Edit mapping files directly in the Companion UI with autosave and error revert.
+- **Debug Logging:** Output detailed logs, including raw MIDI bytes, for troubleshooting.
 
-## Sequenz Ablauf
-- Quelle routen: alle Ziel-Racks nacheinander ausgeführt
-- Timeout: 1000ms (sofortiger Abbruch mit Fehlzählung) ab Start der Sequenz
-- Delay wird nach jedem gesendeten MIDI Schritt angewendet
-- Neue Routing Action während laufender Sequenz wird verworfen (Warn-Log)
+## Configuration Files
 
-## Konfiguration
-- Log Level (error/warn/info/debug)
-- Max Racks (64/32/16/8/4) beeinflusst Validierung
-- MIDI Output Name (Text Name des vorhandenen Geräts)
-- JSON Textareas (Änderungen + separate Apply Action)
+- `superrack-midi-map.json`: Defines MIDI messages for each rack.
 
-Siehe `HELP.md` für weitere Hinweise.
+## File Overview
 
-See [HELP.md](./companion/HELP.md) and [LICENSE](./LICENSE)
+- `actions.js`: Implements Companion actions.
+- `feedbacks.js`: Implements Companion feedbacks.
+- `main.js`: Module initialization, configuration loading, and core logic.
+- `variables.js`: Defines and updates module variables.
+- `upgrades.js`: Handles configuration migrations.
+- `companion/HELP.md`: Additional help for Companion users.
+- `companion/manifest.json`: Module metadata for Companion.
+
+## Usage
+
+1. **Install the module** in Bitfocus Companion.
+2. **Configure mappings** in `superrack-midi-map.json` via the Companion UI.
+3. **Assign actions and feedbacks** to buttons as needed.
+4. **Monitor variables and feedbacks** for real-time status.
+
+## Development
+
+- Node.js based, uses standard Companion module structure.
+- Edit JSON files for custom mappings.
+- Debug output available in the Companion log.
+
+## License
+
+See `LICENSE` for details.

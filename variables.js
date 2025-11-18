@@ -1,13 +1,11 @@
 module.exports = function (self) {
 	self.setVariableDefinitions([
-		{ variableId: 'active_source_index', name: 'Aktive Quelle Index' },
-		{ variableId: 'active_source_label', name: 'Aktive Quelle Label' },
-		{ variableId: 'last_routed_racks', name: 'Zuletzt geroutete Racks (IDs)' },
-		{ variableId: 'last_action_timestamp', name: 'Letzter Action Zeitstempel (ms)' },
-		{ variableId: 'failed_steps_total', name: 'Fehlgeschlagene MIDI Steps Gesamt' },
-        { variableId: 'midi_last_type', name: 'Letzter MIDI Typ' },
-        { variableId: 'midi_last_channel', name: 'Letzter MIDI Kanal' },
-        { variableId: 'midi_last_controller', name: 'Letzter MIDI Controller' },
-        { variableId: 'midi_last_value', name: 'Letzte MIDI Value' },
+		{ variableId: 'last_routed_racks', name: 'Last routed Racks (IDs)' },
+		{ variableId: 'last_action_timestamp', name: 'Last action timestamp (ms)' },
+		{ variableId: 'failed_steps_total', name: 'Failed MIDI steps (total)' },
+        { variableId: 'midi_last_type', name: 'Last MIDI type' },
+        { variableId: 'midi_last_channel', name: 'Last MIDI channel' },
+        { variableId: 'midi_last_controller', name: 'Last MIDI controller' },
+        { variableId: 'midi_last_value', name: 'Last MIDI value' },
 	])
 }

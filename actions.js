@@ -5,7 +5,7 @@ module.exports = function (self) {
 
 	self.setActionDefinitions({
 		route_rack: {
-			name: 'Route einzelnes Rack',
+			name: 'Call rack',
 			options: [
 				{ id: 'rackId', type: 'dropdown', label: 'Rack', choices: rackChoices, default: rackChoices[0]?.id },
 			],
@@ -13,17 +13,8 @@ module.exports = function (self) {
 				await self.routeRack(event.options.rackId)
 			},
 		},
-		empty_routing: {
-			name: 'Routing Matrix leeren',
-			callback: async () => {
-				self.state.routingMatrix = { matrix: {} }
-				const p = self._dataDirPath(self.jsonFiles.routing)
-				try { require('fs').writeFileSync(p, JSON.stringify(self.state.routingMatrix,null,2)) } catch {}
-				self._log('info','Routing Matrix geleert')
-			},
-		},
         route_hot_snapshots: {
-            name: 'Route einzelnen Hot Snapshot',
+            name: 'route single Hot Snapshot',
             options: [
                 { id: 'snapshotId', type: 'dropdown', label: 'Hot Snapshot', choices: hotSnapshotChoices, default: hotSnapshotChoices[0]?.id },
             ],
@@ -32,7 +23,7 @@ module.exports = function (self) {
             },
         },
         route_hot_plugins: {
-            name: 'Route einzelnes Hot Plugin',
+            name: 'route single Hot Plugin',
             options: [
                 { id: 'pluginId', type: 'dropdown', label: 'Hot Plugin', choices: hotPluginChoices, default: hotPluginChoices[0]?.id },
             ],
@@ -41,7 +32,7 @@ module.exports = function (self) {
             },
         },
         trigger_channel: {
-            name: 'Trigger Channel',
+            name: 'trigger channel',
             options: [
                 {
                     id: 'channelIndex',
@@ -66,7 +57,7 @@ module.exports = function (self) {
                 if (foundRackId) {
                     await self.routeRack(foundRackId)
                 } else {
-                    self._log('warn', `Kein Rack für Kanal Index ${channelIndex} gefunden`)
+                    self._log('warn', `found no rack for channel index ${channelIndex}`)
                 }
             }
         },
