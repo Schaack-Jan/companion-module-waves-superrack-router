@@ -1,30 +1,9 @@
-// Kopf von main.js (ersetzen / vor bestehendem Code einfügen)
-console.info('[BOOT] Datei wird geladen')
-
 const {InstanceBase, runEntrypoint, InstanceStatus} = require('@companion-module/base')
 const UpgradeScripts = require('./upgrades')
 const UpdateActions = require('./actions')
 const UpdateFeedbacks = require('./feedbacks')
 const UpdateVariableDefinitions = require('./variables')
 const superrackMidiMap = require('./superrack-midi-map.json')
-
-console.info('[BOOT] Nach allen requires')
-
-process.on('uncaughtException', (e) => {
-    console.error('[FATAL] UncaughtException', e)
-})
-process.on('unhandledRejection', (e) => {
-    console.error('[FATAL] UnhandledRejection', e)
-})
-process.on('beforeExit', (code) => {
-    console.error('[EXIT] beforeExit code', code)
-})
-process.on('exit', (code) => {
-    console.error('[EXIT] exit code', code)
-})
-process.on('SIGINT', () => {
-    console.error('[EXIT] SIGINT')
-})
 
 class ModuleInstance extends InstanceBase {
     constructor(internal) {
@@ -54,10 +33,6 @@ class ModuleInstance extends InstanceBase {
         this.updateActions()
         this.updateFeedbacks()
         this.updateVariableDefinitions()
-
-        /*console.log(this._jsonCacheText.midi)
-        console.log(JSON.stringify(superrackMidiMap, null, 2))
-        console.log(superrackMidiMap)*/
     }
 
     async destroy() {
