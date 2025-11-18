@@ -57,7 +57,7 @@ module.exports = function (self) {
                 let foundRackId = null
                 const maxRacks = parseInt(self.config?.maxRacks, 10) || self.state.maxRacks || 64
                 for (let i = 1; i <= maxRacks; i++) {
-                    if (self.config?.[`rack_channel_index_${i}`] == channelIndex) {
+                    if (self.config?.[`rack_channel_index_${i}`] === channelIndex) {
                         foundRackId = i
                         break
                     }
