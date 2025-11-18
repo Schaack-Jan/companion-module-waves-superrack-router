@@ -43,7 +43,7 @@ class ModuleInstance extends InstanceBase {
             sequenceTimeoutMs: 1000,
         }
         this.logLevel = 'info'
-        this._jsonCacheText = {routing: '', midi: ''}
+        this._json = {routing: '', midi: ''}
     }
 
     async init(config) {
@@ -119,10 +119,10 @@ class ModuleInstance extends InstanceBase {
             },
             {
                 type: 'textinput',
-                id: 'midiJsonText',
+                id: 'midiMap',
                 label: 'superrack-midi-map.json',
                 width: 12,
-                default: this._jsonCacheText.midi || JSON.stringify(superrackMidiMap, null, 2),
+                default: this._json.midi ? this._json.midi : JSON.stringify(superrackMidiMap, null, 2),
                 multiline: true,
             },
         ]
@@ -152,8 +152,16 @@ class ModuleInstance extends InstanceBase {
         const mr = parseInt(this.config?.maxRacks, 10)
         if ([64, 32, 16, 8, 4].includes(mr)) this.state.maxRacks = mr
 
-        if (this.config?.routingJsonText) this._jsonCacheText.routing = this.config.routingJsonText
-        if (this.config?.midiJsonText) this._jsonCacheText.midi = this.config.midiJsonText
+        if (this.config?.midiMap) {
+            if (!this._json.midi) {
+                this._json.midi = JSON.stringify(superrackMidiMap, null, 2)
+            } else {
+                this._json.midi = this.config.midiMap
+            }
+        } else {
+            this._json.midi = JSON.stringify(superrackMidiMap, null, 2)
+            this.config.midiMap = JSON.stringify(superrackMidiMap, null, 2)
+        }
     }
 
     _sendMidiStep(step) {
@@ -206,7 +214,7 @@ class ModuleInstance extends InstanceBase {
     }
 
     _parseJsonField(kind, validateFn, defaults) {
-        const raw = this._jsonCacheText[kind] || ''
+        const raw = this._json[kind] || ''
         let parsed = defaults
         if (raw.trim()) {
             try {
