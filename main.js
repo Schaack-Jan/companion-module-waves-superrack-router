@@ -327,42 +327,6 @@ class ModuleInstance extends InstanceBase {
         return Object.keys(racks).map(r => ({id: parseInt(r, 10), label: `Rack ${r}`}))
     }
 
-    async routeSource(sourceIndex) {
-        if (sourceIndex == null) {
-            this._log('warn', 'routeSource ohne Index');
-            return
-        }
-        if (this.state.sequenceRunning) {
-            this._log('warn', 'Sequenz läuft – neue Source verworfen', {sourceIndex});
-            return
-        }
-        const matrix = this.state.routingMatrix?.matrix || {}
-        const rackIds = matrix[String(sourceIndex)] || []
-        this.state.sequenceRunning = true
-        this.state.sequenceStartTs = Date.now()
-        this.state.activeSourceIndex = sourceIndex
-        this.state.activeSourceLabel = this._lookupSourceLabel(sourceIndex)
-        this.state.lastRoutedRacks = rackIds.slice()
-        this.state.lastActionTimestamp = Date.now()
-        this._updateVariables()
-        this._log('info', 'Route Source gestartet', {sourceIndex, rackIds})
-        let aborted = false
-        for (const rackId of rackIds) {
-            if (Date.now() - this.state.sequenceStartTs > this.state.sequenceTimeoutMs) {
-                aborted = true;
-                break
-            }
-            await this._executeRackSequence(rackId)
-        }
-        if (aborted) {
-            this._log('error', 'Sequenz Timeout – abgebrochen');
-            this.state.failedStepsTotal++;
-            this._updateVariables()
-        }
-        this.state.sequenceRunning = false
-        if (!aborted) this._log('info', 'Route Source abgeschlossen', {sourceIndex})
-    }
-
     async routeRack(rackId) {
         if (rackId == null) {
             this._log('warn', 'routeRack ohne RackId');
