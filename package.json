@@ -9,7 +9,7 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/bitfocus/companion-module-waves-superrack-router.git"
+		"url": "git+https://github.com/Schaack-Jan/companion-module-waves-superrack-router.git"
 	},
 	"engines": {
 		"node": "^22.20",

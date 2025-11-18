@@ -4,3 +4,12 @@ package-lock.json
 /*.tgz
 DEBUG-*
 /.yarn
+.idea
+.vscode
+.DS_Store
+/dist
+/build
+/.env
+.env.local
+.env.*.local
+coverage/
