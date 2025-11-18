@@ -30,7 +30,6 @@ class ModuleInstance extends InstanceBase {
     constructor(internal) {
         super(internal)
         this.state = {
-            wingIndexMap: null,
             routingMatrix: {matrix: {}},
             rackMidiMap: {racks: {}},
             activeSourceIndex: null,
@@ -44,7 +43,7 @@ class ModuleInstance extends InstanceBase {
             sequenceTimeoutMs: 1000,
         }
         this.logLevel = 'info'
-        this._jsonCacheText = {wing: '', routing: '', midi: ''}
+        this._jsonCacheText = {routing: '', midi: ''}
     }
 
     async init(config) {
@@ -55,7 +54,6 @@ class ModuleInstance extends InstanceBase {
         this.updateActions()
         this.updateFeedbacks()
         this.updateVariableDefinitions()
-        this._buildPresets()
 
         /*console.log(this._jsonCacheText.midi)
         console.log(JSON.stringify(superrackMidiMap, null, 2))
@@ -81,10 +79,6 @@ class ModuleInstance extends InstanceBase {
         }
         try {
             this.updateVariableDefinitions()
-        } catch {
-        }
-        try {
-            this._buildPresets()
         } catch {
         }
     }
@@ -158,7 +152,6 @@ class ModuleInstance extends InstanceBase {
         const mr = parseInt(this.config?.maxRacks, 10)
         if ([64, 32, 16, 8, 4].includes(mr)) this.state.maxRacks = mr
 
-        if (this.config?.wingJsonText) this._jsonCacheText.wing = this.config.wingJsonText
         if (this.config?.routingJsonText) this._jsonCacheText.routing = this.config.routingJsonText
         if (this.config?.midiJsonText) this._jsonCacheText.midi = this.config.midiJsonText
     }
@@ -208,11 +201,8 @@ class ModuleInstance extends InstanceBase {
     }
 
     async _loadAllJsonFromConfig() {
-        this._parseJsonField('wing', this._validateWingIndexMap, {channels: [], buses: [], mains: [], matrices: []})
         this._parseJsonField('routing', this._validateRoutingMatrix, {matrix: {}})
         this._parseJsonField('midi', this._validateRackMidiMap, {racks: {}})
-
-        //console.log('[LOAD] wingIndexMap', superrackMidiMap)
     }
 
     _parseJsonField(kind, validateFn, defaults) {
@@ -225,17 +215,8 @@ class ModuleInstance extends InstanceBase {
             } catch {
             }
         }
-        if (kind === 'wing') this.state.wingIndexMap = parsed
-        else if (kind === 'routing') this.state.routingMatrix = parsed
+        if (kind === 'routing') this.state.routingMatrix = parsed
         else if (kind === 'midi') this.state.rackMidiMap = parsed
-    }
-
-    _validateWingIndexMap(obj) {
-        if (!obj) return false
-        if (!Array.isArray(obj.channels) || !Array.isArray(obj.buses) || !Array.isArray(obj.mains) || !Array.isArray(obj.matrices)) return false
-        const used = new Set()
-        const checkArr = (arr) => arr.every(e => e && typeof e.index === 'number' && typeof e.label === 'string' && !used.has(e.index) && used.add(e.index))
-        return checkArr(obj.channels) && checkArr(obj.buses) && checkArr(obj.mains) && checkArr(obj.matrices)
     }
 
     _validateRoutingMatrix(obj) {
@@ -358,30 +339,9 @@ class ModuleInstance extends InstanceBase {
         })
     }
 
-    _buildSourceChoices() {
-        const res = []
-        const m = this.state.wingIndexMap
-        if (!m) return res
-        const pushArr = (arr) => {
-            for (const e of arr) res.push({id: e.index, label: e.label})
-        }
-        pushArr(m.channels);
-        pushArr(m.buses);
-        pushArr(m.mains);
-        pushArr(m.matrices)
-        return res
-    }
-
     _buildRackChoices() {
         const racks = this.state.rackMidiMap?.racks || {}
         return Object.keys(racks).map(r => ({id: parseInt(r, 10), label: `Rack ${r}`}))
-    }
-
-    _lookupSourceLabel(index) {
-        const m = this.state.wingIndexMap;
-        if (!m) return ''
-        const find = (arr) => arr.find(e => e.index === index)
-        return find(m.channels)?.label || find(m.buses)?.label || find(m.mains)?.label || find(m.matrices)?.label || ''
     }
 
     async routeSource(sourceIndex) {
@@ -488,53 +448,6 @@ class ModuleInstance extends InstanceBase {
             if (step.delay > 0) await new Promise(res => setTimeout(res, step.delay))
         }
         this._log('info', 'Rack Sequenz Ende', {rackId})
-    }
-
-    _buildPresets() {
-        const presets = []
-        const srcChoices = this._buildSourceChoices()
-        for (const c of srcChoices) {
-            presets.push({
-                type: 'button', category: 'Quellen', name: `Route ${c.label}`,
-                style: {text: c.label, size: 'auto', color: 'white', bgcolor: 'darkgrey'},
-                actions: [{actionId: 'route_source', options: {sourceIndex: c.id}}],
-                feedbacks: [{
-                    feedbackId: 'active_source',
-                    options: {sourceIndex: c.id},
-                    style: {bgcolor: 'green', color: 'white'}
-                }],
-            })
-        }
-        presets.push({
-            type: 'button',
-            category: 'System',
-            name: 'Reload JSON',
-            style: {text: 'Reload JSON', size: 'auto', color: 'white', bgcolor: 'blue'},
-            actions: [{actionId: 'reload_json'}]
-        })
-        presets.push({
-            type: 'button',
-            category: 'System',
-            name: 'Empty Routing',
-            style: {text: 'Empty Routing', size: 'auto', color: 'white', bgcolor: 'orange'},
-            actions: [{actionId: 'empty_routing'}]
-        })
-        const rackChoices = this._buildRackChoices()
-        for (const r of rackChoices) {
-            presets.push({
-                type: 'button',
-                category: 'Racks',
-                name: `Rack ${r.id}`,
-                style: {text: `Rack ${r.id}`, size: 'auto', color: 'white', bgcolor: 'darkgrey'},
-                actions: [{actionId: 'route_rack', options: {rackId: r.id}}],
-                feedbacks: [{
-                    feedbackId: 'rack_last_used',
-                    options: {rackId: r.id},
-                    style: {bgcolor: 'purple', color: 'white'}
-                }]
-            })
-        }
-        this.setPresetDefinitions(presets)
     }
 }
 
