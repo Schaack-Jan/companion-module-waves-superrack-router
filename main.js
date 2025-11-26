@@ -56,6 +56,8 @@ class ModuleInstance extends InstanceBase {
 	}
 
 	getConfigFields() {
+        this.config = this.config || {};
+
 		const fields = [
 			{
 				type: 'static-text',
@@ -102,7 +104,7 @@ class ModuleInstance extends InstanceBase {
 		const maxRacks = parseInt(this.config?.maxRacks, 10) || this.state.maxRacks || 64
 		for (let i = 1; i <= maxRacks; i++) {
 			const key = `rack_channel_index_${i}`
-			if (!this.config[key] || this.config[key] === '') {
+			if (!key in this.config || !this.config[key] || this.config[key] === '') {
 				this.config[key] = `${i}`
 			}
 
