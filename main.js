@@ -76,7 +76,7 @@ class ModuleInstance extends InstanceBase {
 					{ id: 'info', label: 'info' },
 					{ id: 'debug', label: 'debug' },
 				],
-				default: this.logLevel || 'info',
+				default: this.logLevel || 'error',
 			},
 			{
 				type: 'dropdown',
